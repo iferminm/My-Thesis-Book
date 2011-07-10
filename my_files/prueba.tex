@@ -1,0 +1,315 @@
+\documentclass[letterpaper,12pt,oneside,openany, spanish, oldfontcommands]{memoir}
+
+\usepackage[spanish]{babel}
+\usepackage[utf8]{inputenc}
+\usepackage{setspace}
+\usepackage{tabularx}
+\usepackage{anysize}
+\usepackage{wrapfig}
+\usepackage{colortbl}
+\usepackage{graphicx}
+\usepackage{slashbox}
+\usepackage{supertabular}
+\usepackage{longtable}
+\usepackage{rotating}
+%para los simbolos usados en las vinetas
+\usepackage{pifont}
+\usepackage[dvips,final]{epsfig}
+\definecolor{vivinicered}{RGB}{0,104,166}
+\definecolor{cap}{RGB}{204,230,255}
+% Para tener marcadores por secciones y subsecciones
+\usepackage[pdftex=true,colorlinks=true,plainpages=false]{hyperref}
+\hypersetup{
+    colorlinks,
+    citecolor=vivinicered,
+    filecolor=vivinicered,
+    linkcolor=vivinicered,
+    urlcolor=vivinicered,
+}
+
+\usepackage[table,svgnames,hyperref]{xcolor}
+\usepackage{calc}
+\usepackage{ifthen}
+\usepackage{pgf,tikz}
+\usetikzlibrary{shapes,arrows,calc,positioning,shadows}
+
+%%%%%%%%	COMO SE VEN LOS CAPITULOS	%%%%%%%%%%
+\usepackage{color,calc,graphicx,soul,fourier}
+\makeatletter
+\newlength\dlf@normtxtw
+\setlength\dlf@normtxtw{\textwidth}
+\def\myhelvetfont{\def\sfdefault{mdput}}
+\newsavebox{\feline@chapter}
+\newcommand\feline@chapter@marker[1][4cm]{%
+\sbox\feline@chapter{%
+\resizebox{!}{#1}{\fboxsep=1pt%
+\colorbox{vivinicered}{\color{white}\bfseries\sffamily\thechapter}%
+}}%
+\rotatebox{90}{%
+\resizebox{%
+\heightof{\usebox{\feline@chapter}}+\depthof{\usebox{\feline@chapter}}}%
+{!}{\scshape\so\@chapapp}}\quad%
+\raisebox{\depthof{\usebox{\feline@chapter}}}{\usebox{\feline@chapter}}%
+}
+\newcommand\feline@chm[1][4cm]{%
+\sbox\feline@chapter{\feline@chapter@marker[#1]}%
+\makebox[0pt][l]{% aka \rlap
+\makebox[1cm][r]{\usebox\feline@chapter}%
+}}
+\makechapterstyle{daleif1}{
+\renewcommand\chapnamefont{\normalfont\Large\scshape\raggedleft\so}
+\renewcommand\chaptitlefont{\normalfont\huge\bfseries\scshape\color{vivinicered}}
+\renewcommand\chapternamenum{}
+\renewcommand\printchaptername{}
+\renewcommand\printchapternum{\null\hfill\feline@chm[2.5cm]\par}
+\renewcommand\afterchapternum{\par\vskip\midchapskip}
+\renewcommand\printchaptertitle[1]{\chaptitlefont\raggedleft ##1\par}
+}
+\makeatother
+\chapterstyle{daleif1}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+% espaciado de 1.5 entre lineas
+\renewcommand{\baselinestretch}{1.5}
+
+\AtBeginDocument{
+  \def\labelitemi{\ding{224}}
+  \def\labelitemii{\ding{223}}
+}
+
+%%%%%%%%	COMANDOS PARA IMAGENES PNG	%%%%%%%%
+% \pngfig
+% Usado para introducir imagenes adentro del directorio img/ cuya extension sea .png
+% Float -> valor es el porcentaje de tama~no, 
+% String -> nombre del archivo (funciona con archivos con nombres sin espacios)
+% String -> Descripci'on que va a ir debajo de la imagen introducida
+% String -> Fuente de la figura
+% \pngfig[.5]{archihbhjv{descripcion de la imagen introducida} 
+%\newcommand{\pngfig}[4][1.0]{
+%\begin{figure}[H]
+%\begin{centering}
+%\scalebox{#1}{\includegraphics{/Users/vivianatrujillo/tesis/plantilla/imagenes/#2.png}}
+%\par\end{centering}
+%\begin{centering} 
+%\caption{\footnotesize #3} 
+%\label{fig:#2}
+%\par\end{centering}
+%\centering{}{\tiny #4}
+%}
+
+%\newcommand{\pngfigrotada}[4][1.0]{
+% \begin{figure}[H]
+% \centering
+% \vspace{2mm}
+% \scalebox{#1}{\begin{sideways} \includegraphics{/Users/vivianatrujillo/tesis/plantilla/imagenes/#2.png} \end{sideways} }
+% \caption{\footnotesize #3}
+% \label{fig:#2}
+%{\tiny
+% #4}
+% \end{figure}
+%}
+%%%%%%%%	COMANDOS PARA IMAGENES JPG	%%%%%%%%
+%\newcommand{\jpgfig}[4][1.0]{
+%\begin{figure}[H]
+%\begin{centering}
+%\scalebox{#1}{\includegraphics{/Users/vivianatrujillo/tesis/plantilla/imagenes/#2.jpg}}
+%\par\end{centering}
+%\begin{centering}
+%\begin{quote} 
+%\caption{\footnotesize #3}
+%\label{fig:#2}
+%\part\end{centering}
+%\centering{}{\tiny #4}
+%\end{quote}
+%\end{figure}
+%}
+
+% Igual que las anteriores pero esta vez coloca la imagen rotada 90 grados (landscape)
+%\newcommand{\jpgfigrotada}[4][1.0]{
+% \begin{figure}[H]
+% \centering
+% \vspace{2mm}
+% \scalebox{#1}{\begin{sideways} \includegraphics{/Users/vivianatrujillo/tesis/plantilla/imagenes/#2.jpg} \end{sideways} }
+% \caption{\footnotesize #3}
+% \label{fig:#2}
+%{\tiny
+% #4}
+% \end{figure}
+%}
+
+%%%%%%%%	COMANDOS PARA TABLAS	%%%%%%%%
+% \nuevatabla
+% Inserta una nueva tabla centrada y con los atributos.
+% String -> Nombre de la tabla para luego ser referenciada (Sin espacios)
+% String -> Texto descriptivo de la tabla que aparecer'a debajo de la misma.
+% String -> Fuente elaboraci'on de la tabla
+% Opciones de las columnas introducidas
+% EJEMPLO: \nuevatabla{resumenDecripcionesAtributosCalidad}{Resumen de descripciones de atributos de calidad}{Fuente: Elaboraci'on propia}{|c|p{10cm}|}{\textbf{Atributo de Calidad} & \textbf{Descripci'on} \\ \hline}
+% Ojo, recordar que las opciones de posici'on de la tabla se est'an colocando por defecto desde este comando y no son escogidos en la invocaci'on. Recordar qu'e:
+%b: Intentara ponerla en el fondo de la pagina
+%h: Intentara ponerla en la misma posicion en que se encuentra en el codigo fuente
+%t: Intentara ponerla al principio de la pagina
+%p: La pondra en una pagina que contenga solo elementos flotantes
+%!: Ignorar la mayora de las restricciones impuestas por LATEX
+\newcommand{\nuevatabla}[5]{
+{\scriptsize 
+\begin{table}[H] 
+\setlength{\arrayrulewidth}{1pt}
+\begin{center}
+\begin{tabular}{#4}\hline
+#5
+\hline
+\end{tabular}
+\begin{quote} 
+\caption{\footnotesize #2}
+\label{tbl:#1}
+\begin{center}
+{\tiny #3}
+\end{center}
+\end{quote}
+\end{center}
+\end{table}
+}
+}
+
+% lo mismo que la anterior pero con la tabla rotada 90 grados
+\newcommand{\nuevatablarotada}[5]{
+\begin{landscape}
+\begin{table}[H] \footnotesize %[!hbt]%[htdp]
+\setlength{\arrayrulewidth}{1pt}
+\begin{center}
+\caption{\footnotesize #2}
+{\tiny
+#3\\
+\begin{tabular}{#4}\hline
+#5}
+\label{tbl:#1}
+\end{tabular}
+\end{center}
+\end{table}
+\end{landscape}
+}
+
+% \nuevalongtabla
+%Cuando la tabla es muy grande y no cabe en una p'agina es necesario el uso de esta funci'on
+% es igual a la \nuevatabla, pero garantiza que se pueda pasar a m'as de una p'agina.
+%1 label
+%2 caption de la tabla
+%3 fuente
+%4 la estructura
+%5 t'itulo que se debe mantener en otras hojas
+%6 contenido
+\newcommand{\nuevalongtabla}[6]{
+\begin{longtable}[H] 	 {#4}
+\hline
+\endfirsthead
+\hline
+#5 \\ 
+\hline 
+\endhead 
+#6
+\hline 
+\caption{\footnotesize #2 - #3}
+\label{tbl:#1}
+\end{longtable}
+}
+
+% \nuevalongtablarotada
+%Cuando la tabla es muy grande y no cabe en una p'agina es necesario el uso de esta funci'on
+% es igual a la \nuevatabla, pero garantiza que se pueda pasar a m'as de una p'agina.
+%1 label
+%2 caption de la tabla
+%3 fuente
+%4 la estructura
+%5 t'itulo que se debe mantener en otras hojas
+%6 contenido
+\newcommand{\nuevalongtablarotada}[6]{
+\begin{landscape}
+\begin{longtable}[H]{#4} 
+\caption{\footnotesize #2}
+#3\\
+\hline
+\endfirsthead
+\hline
+#5 \\ 
+\hline 
+\endhead 
+#6
+\label{tbl:#1}
+\end{longtable}
+\end{landscape}
+}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% COMIENZO DEL DOCUMENTO %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{document}
+
+\renewcommand{\contentsname}{'INDICE DE CONTENIDO}
+\renewcommand{\bibname}{Bibliograf\'ia} % Para que ya no diga Bibliograf'ia sino diga Referencias
+\renewcommand{\tablename}{Tabla} % Los Captions de tablas salen con la palabra Tabla y no con la palabra Cuadro
+\renewcommand{\listtablename}{'INDICE DE TABLAS} % Para que diga 'indice de tablas y no 'indice de cuadros
+\renewcommand{\listfigurename}{'INDICE DE FIGURAS}
+\renewcommand{\chaptername}{CAP'ITULO}
+    
+\parskip 6pt
+
+\pagenumbering{roman}
+\pagestyle{empty}
+
+\include{portada}
+\include{agradecimientos}
+
+\pagestyle{plain}
+
+\include{indices}
+
+\pagenumbering{arabic}
+\pagestyle{empty}
+
+\makepagestyle{ruled}
+\makeoddfoot{ruled}{}{}{\thepage}
+\makeheadrule{ruled}{\textwidth}{\normalrulethickness}
+\makeevenhead{ruled}{\scshape\leftmark}{}{} % small caps
+\makeoddhead{ruled}{}{}{\rightmark}
+\pagestyle{ruled}
+
+
+\include{resumen}
+\include{introduccion}
+\include{problema}
+\include{marcoTeorico}
+\include{marcoMetodologico}
+\include{desarrollo}
+\include{resultados}
+\include{conclusiones}
+
+\pagestyle{plain}
+
+%\include{bibliografia}
+
+%\include{abreviaturas}
+\addtocontents{toc}{\vspace{2em}} % Add a gap in the Contents, for aesthetics
+
+\pagenumbering{roman}
+
+\pagestyle{empty}
+
+%\include{portadaA}
+
+\pagenumbering{arabic}
+\setcounter{page}{1} 
+
+\pagestyle{ruled}
+
+\appendix % Cue to tell LaTeX that the following 'chapters' are Appendices
+\clearpage
+
+%Marco Teorico
+%\include{apendiceG} 		% Appendix GSM
+%\include{apendiceMPL} 		% Appendix Metodo de ponderacion lineal
+
+\addtocontents{toc}{\vspace{2em}}  
+
+%\backmatter
+
+\end{document}
