@@ -1,6 +1,95 @@
 \chapter{Marco Teórico}
 \label{chap:marcoTeorico}
 
+Para poder adentrarnos en el tema de la Web Semántica, resulta necesario estudiar y comprender los antecedentes y los eventos que poco a poco han ido llevando a la evolución de la Internet a la herramienta que tenemos hoy día y que, poco a poco también, irán llevando la Web actual, la Web 2.0, a su evolución natural: la Web 3.0, es decir, la Web Semántica.
 
+Si actualmente nos encontramos en la llamada Web 2.0, tuvo que, en algún momento, existir una Web 1.0. Esta primera versión, por así llamarla, sólo contaba con portales que únicamente exponían contenido. La Web 1.0 estaba destinada a la publicación de contenidos corporativos, no daba la posibilidad de participación abierta a los usuarios, no existían espacios para la publicación de contenido por parte de los usuarios y, estos usuarios, eran importantes en tanto fueran consumidores [5], estas, según Ricardo Casanova, eran algunas de las características principales de la Web 1.0 que, además, resultan ser grandes limitaciones. En la Web 1.0, únicamente personas especializadas eran capaces de crear contenido, por ello, sólo las grandes empresas podían disponer de un espacio en la red, el resto de los usuarios únicamente podían recibir (consumir) el mensaje o el contenido que era publicado, sin la posibilidad de participar en la generación y actualización del mismo.
+
+El término Web 2.0 aparece a mediados del año 2004, y fue creciendo paulatinamente hasta convertirse en portada de los principales seminarios y congresos en la navidad de 2006. Según O'Reilly (citado por Pardo y Cobo, 2007), principal promotor de la Web 2.0, algunos de sus principios básicos son: La web como plataforma, el aprovechamiento de la Inteligencia Colectiva, la gestión de Bases de Datos como competencia básica, el software no limitado a un solo dispositivo y brindar experiencias enriquecedoras al usuario [2]. Todo esto quiere decir, que ahora la interacción de los usuarios es bidireccional, sigue siendo un subgrupo técnico de estos usuarios el que crea los portales, pero ahora, la gran diferencia es que todos los usuarios son capaces de generar contenido en dichos portales. El usuario ya no es un simple consumidor, sino que pasa a ser consumidor-generador de contenido en la web. Pasamos de una red pasiva, de páginas estáticas, a una red activa de páginas dinámicas que interactúan con bases de datos para almacenar y actualizar su contenido que, a su vez, es generado por los usuarios que hacen vida dentro del portal. 
+
+La evolución es un factor constante en todas las áreas y tecnologías de las Ciencias de la Computación y la Ingeniería Informática, Internet no es la excepción a esta regla, por lo es fácil deducir que la Web 2.0 no es más que el estado actual y transitorio de esta tecnología que, eventualmente, evolucionará a una Web 3.0, cuyas características están siendo definidas por el W3C bajo el marco de la Web Semántica.
+
+\section{La Web Semántica}
+
+El W3C define a la Web Semántica como ``una Web extendida, dotada de mayor significado en la que cualquier usuario de Internet, podrá encontrar respuestas a sus preguntas de forma más rápida y sencilla gracias a que la información está mejor definida"[4]. Al dotar a la Web de un mayor significado y, por consiguiente, de mayor semántica, es posible obtener solución a problemas comunes de búsqueda de información, gracias a la implementación de una infraestructura y lenguajes comunes de búsqueda, destinados a resolver dichos problemas, realizando dichas búsquedas tomando en cuenta el contexto y el significado real de la consulta.
+
+Una vez definida la Web Semántica a nivel conceptual, conviene examinar brevemente cómo funciona. Supongamos que la Web tiene la capacidad de construir una base de conocimiento sobre las preferencias de los usuarios y que, a través de una combinación entre su conocimiento y la información disponible en la Internet, sea capaz de atender de forma exacta las demandas de información por parte de los usuarios, por ejemplo, reserva de hoteles, vuelos, médicos o libros.
+
+Si esto ocurriese en la vida real, el usuario, al intentar encontrar ``todos los vuelos a Praga para mañana por la mañana", obtendría resultados exactos sobre su búsqueda. Desafortunadamente la realidad es otra, los buscadores actuales mostrarían resultados acerca de ``Praga" como localidad turística, noticias de sucesos ocurridos en ``Praga", quizás páginas de periódicos locales, foros sobre ``Praga", en resumen, sitios que contienen las palabras que conforman la consulta hecha por el usuario. Estos resultados son inexactos y, por sí solos, no satisfacen las necesidades de información del usuario, es necesario un segundo filtro, examinar uno a uno los resultados y extraer manualmente la información que resulte interesante. Por otro lado, un buscador con capacidad semántica, mostraría información más exacta a lo que se desea obtener. La ubicación geográfica desde la cual se envía la consulta sería detectada de manera automática, sin necesidad de indicar el punto de partida, además, elementos de la oración como ``mañana" adquirirían significado, siendo convertidos en un día concreto calculado en función de un ``hoy". De igual manera ocurriría con el segundo ``mañana", el cual sería interpretado como un momento determinado del día. Todo ello a través de una Web en la que los datos, dejan de ser sólo datos y pasan a ser información llena de significado.
+
+La manera como se procesará la información no sólo será en términos de entrada y salida de parámetros de búsqueda, sino en términos de su semántica, apoyándose en una infraestructura basada en meta-datos. Vale acotar, que no se trata de Inteligencia Artificial, sino de dar a las máquinas la capacidad de resolver problemas bien definidos, a través de operaciones bien definidas, ejecutadas sobre datos existentes bien definidos a través de meta-datos.
+
+Dentro de la Web Semántica convergen una serie de estándares y tecnologías, muchas de ellas aún en proceso de definición y desarrollo por parte de investigadores alrededor del mundo y el W3C, las cuales se explican brevemente a continuación:
+
+\section{Ontologías}
+
+Según el W3C, ``una Ontología define los términos utilizados para describir y representar conocimiento en un área" [10]. Las Ontologías son utilizadas por personas y aplicaciones que necesitan compartir conocimiento acerca de un área específica, es por ello que las ontologías son relativas a un tópico o área en especial, además, incluyen información acerca de los conceptos básicos y las relaciones entre ellos, esta información puede ser utilizada por las computadoras. De esta manera, una Ontología codifica el conocimiento de un área y lo hace accesible y reutilizable.
+
+La palabra Ontología, se ha utilizado a lo largo de la historia para definir elementos con distintos grados de estructura: desde taxonomías simples hasta teorías lógicas complejas. La Web Semántica necesita ontologías con cierto grado de estructura y significado para poder especificar descripciones para los siguientes conceptos:
+
+\begin{itemize}
+\item Clases y dominios de interés.
+\item Las relaciones que pueden existir entre las clases descritas.
+\item Las propiedades o atributos que pueden tener las clases descritas.
+\end{itemize}
+
+Las Ontologías son escritas en lenguajes basados en lógica, de esta manera se tiene la garantía de que son precisas, detalladas, consistentes y significativas[10]. Muchas herramientas para Ontologías pueden realizar procesos de razonamiento sobre el conocimiento que definen, de esta manera, se puede tener cierta ``inteligencia" y se pueden desarrollar aplicaciones con capacidades complejas como consulta de información de manera semántica y conceptual, soporte a la toma de decisiones, gestión de conocimiento, bases de datos inteligentes, comercio electrónico y entendimiento del lenguaje natural.
+
+En la Web Semántica, resulta necesario el uso de Ontologías ya que proporciona una manera sencilla y eficiente de representar la semántica de los documentos descritos y permitir que sean utilizadas y consultadas por aplicaciones y agentes de software. Para el W3C, el uso de ontologías, permitirá a las aplicaciones del futuro actuar de manera "inteligente" para cumplir con su trabajo de una manera más rápida y con mayor exactitud.
+
+\section{RDF}
+
+Sus siglas significan ``Resource Description Framework", y es ``un lenguaje para la descripción de recursos disponibles en la World Wide Web"[6]. Es un modelo estándar para el intercambio de datos en la Web, RDF extiende la estructura de enlaces de la Web utilizando URIs para dar nombre a las cosas, es así como se establecen enlaces entre dos extremos, normalmente conocidos como ``triples". Este modelo de relaciones permite que los datos estructurados o semi-estructurados sean mezclados, expuestos y compartidos a través de diversas aplicaciones en distintas plataformas.
+
+Toda la estructura descrita en un RDF forma una estructura de grafo, donde los arcos representan las relaciones entre dos recursos, los cuales son representados por los nodos de dicho grafo[7]. Este modelo mental, es la manera más utilizada para lograr explicaciones visuales y fáciles de comprender.
+
+La sintaxis de RDF, está basada en XML, al igual que muchos otros metalenguajes y lenguajes de marcado, como HTML y XHTML. De esta manera, es posible además definir atributos adicionales a los recursos que son descritos en el documento.
+
+\section{RDFS}
+
+Siendo RDF un lenguaje basado en notación XML, pareciera lógico que siga más o menos el mismo esquema. Si recordamos, y si somos estrictos, cada XML debería tener un XML Schema (o, en su defecto, un DTD, pero estos están siendo poco a poco desplazados por los XMLS), que resulta ser otro archivo XML, que lo define. RFDS significa ``RDF Schema" y es ``un lenguaje para la descripción de vocabularios en la Web"[8]. Es una extensión semántica de RDF para describir vocabulario, RDFS no busca definirlos, sino describirlos, proporcionar la facilidades para describir tipos y clases de un mismo dominio y servir como sistema de tipos para RDF.
+
+Un RDF Schema, se escribe utilizando las mismas reglas de RDF, es decir, el Esquema RDF es un documento RDF que, a su vez, es capaz de definir a otros RDF.
+
+RDFS, al igual que RDF, aún se encuentran en proceso de definición y desarrollo, aunque ya el trabajo está bien adelantado y se puede trabajar y desarrollar con ambos. Un ejemplo de esto es el proyecto FOAF o ``Friend of a Friend", que es un proyecto de la Web Semántica para describir personas y las relaciones entre ellas[16] utilizando documentos RDF.
+
+\section{OWL}
+
+OWL, ``es un Lenguaje de Ontologías Web"[9]. Existen muchos lenguajes y herramientas para desarrollar y trabajar con Ontologías, pero ninguna de las existentes hasta el momento resultaba compatible con una arquitectura Web y mucho menos con la Web Semántica. 
+
+El Lenguaje de Ontologías Web, rectifica esto aprovechando una conexión proporcionada por RDF para dar a las Ontologías las siguientes capacidades [9]:
+
+\begin{itemize}
+\item Capacidad de ser distribuidas y compartidas a través de varios sistemas.
+\item Escalable a las necesidades de la Web.
+\item Compatible con los estándares internacionales de accesibilidad Web e Internacionalización (I18N).
+\item Abierto y extensible.
+\end{itemize}
+
+Adicionalmente, OWL es una extensión de RDF Schema para permitir la expresión de relaciones más complejas entre elementos y clases. Algunos de los recursos que tiene OWL y de los que carece RDFS son las siguientes [9]:
+
+\begin{itemize}
+\item Recursos para inferir cuáles elementos que tienen varias propiedades son miembros de una clase en particular.
+\item Recursos para determinar si la totalidad de elementos de una clase tendrán una propiedad determinada o si puede ser que sólo algunos elementos la tengan.
+\item Recursos para diferenciar relaciones 1:1, 1:N y N:1, permitiendo que las ``claves foráneas" de las bases de datos puedan ser representadas en la Ontología.
+\item Recursos para expresar relaciones entre clases definidas en documentos diferentes a través de la Web.
+\item Recursos para definir nuevas clases a partir de uniones, intersecciones y complementos de otras ya existentes.
+\item Recursos para restringir rangos y dominios para especificar combinaciones de clases y propiedades.
+\end{itemize}
+
+OWL, se encuentra aún en proceso de desarrollo y de definición como estándar, pero el trabajo se encuentra bien adelantado y es posible desarrollar aplicaciones con lo que existe actualmente. Existen numerosos razonadores (motores de inferencia) sobre OWL, siendo Protégé-OWL (desarrollado en la Universidad de Stanford) uno de los más utilizados.
+
+\section{SPARQL}
+
+Toda la información acerca de los recursos, se encuentra en Ontologías definidas mediante RDF y RDFS u OWL. SPARQL, ``es un lenguaje de consultas para RDF" [11], es decir, mediante consultas SPARQL puede obtenerse subconjuntos de la información contenida en uno o varios documentos RDF en forma de grafos, dependiendo de las relaciones y de lo que el usuario desee buscar.
+
+SPARQL, aún se encuentra en proceso de desarrollo, aunque existen numerosos motores de consulta en SPARQL y se puede trabajar sobre lo que ya existe.
+
+\section{Motores de Inferencia}
+
+Una vez que se tiene la Ontología ya definida, es necesario definir ciertas reglas de inferencia a ser aplicadas sobre ese conocimiento ya descrito. Estas reglas de inferencia son aplicadas por un Motor de Inferencia, que es un programa que explora la base de conocimiento, aplicando ciertas reglas, hasta dar con la solución que mejor se adapte a las necesidades del usuario [12].
+
+En la Web Semántica, es el motor de inferencia quien traduce la consulta del usuario y evalúa, mediante reglas bien definidas, qué es lo que el usuario realmente está buscando, es por ello que el motor de inferencia juega un papel de suma importancia en este marco.
 
 \newpage
+
