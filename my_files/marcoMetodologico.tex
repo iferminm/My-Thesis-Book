@@ -1,6 +1,68 @@
-\chapter{Marco Metodol\'ogico}
+\chapter{Marco Metodológico}
 \label{chap:marcometodologico}
 
-Copiar y pegar lo mismo de la propuesta
+Las metodologías de desarrollo tradicionales, parecieran haber sido diseñadas para proyectos extensos, con equipos numerosos, en los que se goza de roles bien definidos y que, cada rol, cumple con una labor específica en cada etapa del ciclo de vida.
+
+La realidad de este proyecto es otra, sólo se cuenta con una persona para realizar el trabajo de todos los roles, además, el tiempo de entrega es limitado y resulta, además, conveniente entregarlo lo antes posible. Es por ello que se propone trabajar con una metodología Iterativa Incremental bajo el esquema ágil. Los preceptos del esquema de trabajo enmarcado en el Desarrollo Ágil, fueron definidos por Kent Beck año 2001[13] en un documento denominado El Manifiesto Ágil (The Agile Manifesto), este manifiesto se cita a continuación:
+
+``Estamos descubriendo nuevas maneras de desarrollar software tanto por nuestra propia experiencia como ayudando a terceros. A través de esta experiencia hemos aprendido a valorar:
+
+\begin{itemize}
+\item \textbf{Individuos e interacciones} sobre procesos y herramientas.
+\item \textbf{Software que funciona} sobre documentación exhaustiva.
+\item \textbf{Colaboración con el cliente} sobre negociación de contratos.
+\item \textbf{Responder ante el cambio} sobre el seguimiento de un plan.
+\end{itemize}
+
+Esto es, aunque los elementos a la derecha tienen valor, nosotros valoramos por encima de ellos a los que están a la izquierda".
+
+El Trabajo Especial de Grado, tiene un carácter investigativo y aplicativo, es decir, debe investigarse acerca del tema y realizar un pequeño aporte al área de investigación mediante el desarrollo de algún producto final. Por ello, dado el carácter de un TEG, todos y cada uno de los principios definidos en el Manifiesto Ágil de Kent Beck tienen sentido en un proyecto de este tipo pues, debe valorarse ``Individuos e interacciones sobre procesos y herramientas", esto es, debe valorarse más la interacción entre el tesista y el tutor que los procesos y herramientas necesarios para ello, por ejemplo. Debe darse más valor al ``Software de funciona sobre la documentación exhaustiva", en este caso, para la presentación final, debe mostrarse algo funcional, si bien la documentación es importante, no se hará de manera exhaustiva, únicamente lo necesario para poner orden en el proyecto y para que, posteriormente, si el presente trabajo resulta de interés para alguien, pueda entender qué fue lo que se hizo. ``Colaboración con el cliente sobre negociación de contratos", si bien esto no tiene mucha pertinencia al hablar de un TEG, puede interpretarse como que la Escuela de Ingeniería Informática y el Tesista deberían colaborar pues ambos persiguen un objetivo común: innovar. Finalmente, "Responder ante el cambio sobre el seguimiento de un plan" pues al tratarse de un proyecto de investigación, no todos los requerimientos están claramente definidos ni pueden predecirse en su totalidad, es por ello que conforme se va investigando y despejando la incertidumbre en algunos temas, pueden ir surgiendo nuevas cosas que no se esperaban y se debe estar preparado para responder y adaptar el plan a las nuevas condiciones.
+
+Existen numerosas metodologías y ciclos de vida basados en el modelo ágil, para este proyecto en particular se propone utilizar una metodología basada en Scrum para organizar el proyecto y XP (Programación Extrema o eXtreme Programming en inglés) para la organización de cada una de las iteraciones.
+
+\section{Descripción de la Metodología Planteada}
+
+Para describir la metodología que se utilizará para el desarrollo del proyecto, es necesario primero estudiar las dos metodologías antes mencionadas:
+
+\subsection{SCRUM}
+
+SCRUM es una metodología creada por Jeff Sutherland y su equipo de desarrollo a principios de la década de 1990 [14]. Los principios de SCRUM están enmarcados dentro del Manifiesto Ágil y es un proceso que lleva el Desarrollo de Software a través de las siguientes actividades: requerimientos, análisis, diseño, evolución y entrega. Cada una de esas actividades son realizadas dentro de un patrón de trabajo llamado Sprint, todo el trabajo realizado dentro de un Sprint es adaptado al problema y frecuentemente modificado por el equipo de desarrollo a medida que las condiciones van cambiando.
+
+SCRUM hace énfasis en la utilización de procesos de software que son efectivos en proyectos con tiempos cortos de entrega y requerimientos cambiantes. Esos procesos, en general, definen dos grandes actividades de desarrollo:
+
+\begin{itemize}
+\item \textbf{Backlog:} el backlog, constituye una lista priorizada de requerimientos que agregan valor de negocio al producto, estos requerimientos pueden ser agregados en cualquier momento y, de esta manera, se introducen los cambios en el proyecto [14]. El backlog puede ser, además, modificado en cualquier momento para adaptar las prioridades a los cambios del negocio.
+\item \textbf{Sprints:} los Sprints constituyen paquetes de trabajo que son necesarios para desarrollar un requerimiento o un conjunto de ellos [14]. Los cambios no pueden ser introducidos dentro de un Sprint, de esta manera se asegura que el trabajo que se realiza es estable, pues los requerimientos que se seleccionan para ser desarrollados en un Sprint ya deben estar definidos y se debe tener la certeza de que, en caso de cambiar, será manejable.
+\item \textbf{Scrum Meetings:} son reuniones cortas que, usualmente, se realizan todos los días durante un sprint [14]. Durante los Scrum Meetings se responden a tres preguntas básicas:
+\begin{itemize}
+\item ¿Qué has hecho desde la última reunión?.
+\item ¿Cuáles obstáculos has encontrado?.
+\item ¿Cuál es tu planificación hasta la próxima reunión?.
+\end{itemize}
+\item \textbf{Demos:} se van entregando los resultados de las funcionalidades desarrolladas al cliente para que puedan ser evaluados [14]. De esta manera, se va entregando Software Listo y Funcional que agrega valor al negocio del cliente en cada iteración.
+\end{itemize}
+
+De esta manera, SCRUM permite que los equipos trabajen de manera eficiente y estable en proyectos en los que la incertidumbre siempre está presente.
+
+\subsection{eXtreme Programming}
+
+La metodología eXtreme Programming (XP) es la más utilizada y la más conocida de las metodologías ágiles [15]. Fue inicialmente concebida por Kent Beck a finales de la década de 1980 y se enfoca en hacer énfasis en la etapa de implementación del ciclo de vida, tal como su nombre lo indica, en la parte de programación o codificación, tomando como buena práctica la programación en parejas, de esta manera, mientras uno de los desarrolladores codifica, el otro está observando y advirtiendo de errores a quien escribe el código.
+
+Kent Beck definió cinco valores para establecer las bases de XP como metodología. Cada uno de esos valores se utilizan para poner en marcha las actividades, acciones y tareas de XP [14]:
+
+\begin{itemize}
+\item \textbf{Comunicación}: entre los clientes y los desarrolladores. XP valora más la comunicación informal por ser más rápida en comparación con volúmenes enormes de documentación como medio de comunicación principal.
+\item \textbf{Simplicidad}: XP restringe a los desarrolladores a realizar el diseño y la implementación de código que satisfaga los requerimientos actuales en vez de pensar en factores futuros, si el diseño puede ser mejorado, puede ser modificado posteriormente.
+\item \textbf{Retroalimentación}: durante un proyecto en necesario muchas veces regresar a una etapa previa y modificar algo para que los requerimientos actuales funcionen sin alterar los que ya fueron implementados. El cambio es algo constante en todo proyecto, pero para poder hacerlo correctamente, se necesita retroalimentación.
+\item \textbf{Coraje}: implementar código sin miedo a las consecuencias, pero siempre de manera coherente.
+\end{itemize}
+
+En eXtreme Programming, no se libera una pieza de software hasta que está totalmente funcional y probada, para asegurar que el software funciona, se desarrollan Pruebas Unitarias. 
+
+La metodología propuesta para el desarrollo del presente proyecto, toma la organización de SCRUM y los valores y la filosofía basada en la codificación de XP para llevar a cabo las tareas y actividades concernientes al desarrollo del producto final de este trabajo, obviando la exigencia de XP acerca de la programación en parejas.
+
+\newpage
+
+
 
 \newpage
