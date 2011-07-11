@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.1415926-1.40.10 (TeX Live 2009/Debian) (format=pdflatex 2011.7.9)  10 JUL 2011 17:14
+This is pdfTeX, Version 3.1415926-1.40.10 (TeX Live 2009/Debian) (format=pdflatex 2011.7.9)  10 JUL 2011 19:56
 entering extended mode
  %&-line parsing enabled.
 **libro.tex
@@ -1391,7 +1391,7 @@ LaTeX Font Info:    Redeclaring math accent \mathring on input line 256.
 (./portada.aux) (./agradecimientos.aux) (./indices.aux) (./resumen.aux)
 (./introduccion.aux) (./problema.aux) (./marcoTeorico.aux)
 (./marcoMetodologico.aux) (./desarrollo.aux) (./resultados.aux)
-(./conclusiones.aux))
+(./conclusiones.aux) (./bibliografia.aux))
 \openout1 = `libro.aux'.
 
 LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 245.
@@ -1411,7 +1411,8 @@ LaTeX Font Info:    ... okay on input line 245.
 LaTeX Font Info:    Checking defaults for FML/futm/m/it on input line 245.
 LaTeX Font Info:    Try loading font information for FML+futm on input line 245
 .
- (/usr/share/texmf-texlive/tex/latex/fourier/fmlfutm.fd
+
+(/usr/share/texmf-texlive/tex/latex/fourier/fmlfutm.fd
 File: fmlfutm.fd 2004/10/30 Fontinst v1.926 font definitions for FML/futm.
 )
 LaTeX Font Info:    ... okay on input line 245.
@@ -1481,7 +1482,7 @@ Redoing nameref's label
 \openout2 = `portada.aux'.
 
 (./portada.tex
-</home/israelord/Dissertation/Book/my_files/images/escudoUcab.jpg, id=118, 323.
+</home/israelord/Dissertation/Book/my_files/images/escudoUcab.jpg, id=126, 323.
 2075pt x 401.5pt>
 File: /home/israelord/Dissertation/Book/my_files/images/escudoUcab.jpg Graphic 
 file (type jpg)
@@ -1688,13 +1689,29 @@ Package xcolor Warning: Incompatible color definition on input line 1.
 
 
 
-] [12] [13] [14] [15] [16]
-Overfull \hbox (3.71828pt too wide) in paragraph at lines 74--75
-[]\T1/futs/m/n/12 Recursos pa-ra di-fe-ren-ciar re-la-cio-nes 1:1, 1:N y N:1, p
-er-mi-tien-do que las ``cla-ves fo-rá-neas"de
- []
+] [12] [13] [14] [15] [16] [17]
+LaTeX Font Info:    Font shape `T1/futs/bx/n' in size <14.4> not available
+(Font)              Font shape `T1/futs/b/n' tried instead on input line 82.
 
-[17] [18])
+
+LaTeX Warning: Citation `' on page 18 undefined on input line 83.
+
+
+LaTeX Warning: Citation `' on page 18 undefined on input line 83.
+
+
+LaTeX Warning: Citation `' on page 18 undefined on input line 85.
+
+
+LaTeX Warning: Citation `' on page 18 undefined on input line 85.
+
+
+LaTeX Warning: Citation `' on page 18 undefined on input line 88.
+
+
+LaTeX Warning: Citation `' on page 18 undefined on input line 88.
+
+[18] [19])
 \openout2 = `marcoMetodologico.aux'.
 
  (./marcoMetodologico.tex
@@ -1743,20 +1760,17 @@ l.1 \chapter{Marco MetodolÃ³gico}
 
 Package xcolor Warning: Incompatible color definition on input line 1.
 
-[19
+[20
 
 
 
-] [20]
-LaTeX Font Info:    Font shape `T1/futs/bx/n' in size <14.4> not available
-(Font)              Font shape `T1/futs/b/n' tried instead on input line 27.
- [21] [22]
+] [21] [22] [23]
 Overfull \hbox (0.935pt too wide) in paragraph at lines 57--58
 []\T1/futs/b/n/12 Coraje\T1/futs/m/n/12 : im-ple-men-tar có-di-go sin mie-do a 
 las con-se-cuen-cias, pe-ro siem-pre de ma-ne-ra cohe-
  []
 
-[23])
+[24])
 \openout2 = `desarrollo.aux'.
 
  (./desarrollo.tex
@@ -1805,7 +1819,7 @@ l.1 \chapter{Desarrollo}
 
 Package xcolor Warning: Incompatible color definition on input line 1.
 
-[24
+[25
 
 
 
@@ -1858,7 +1872,7 @@ l.1 \chapter{Resultados}
 
 Package xcolor Warning: Incompatible color definition on input line 1.
 
-) [25
+) [26
 
 
 
@@ -1911,31 +1925,107 @@ l.1 \chapter{Conclusiones y Recomendaciones}
 
 Package xcolor Warning: Incompatible color definition on input line 1.
 
-) [26
+) [27
 
 
 
-] (./libro.aux (./portada.aux) (./agradecimientos.aux) (./indices.aux)
+]
+\openout2 = `bibliografia.aux'.
+
+ (./bibliografia.tex
+
+Package xcolor Warning: Incompatible color definition on input line 1.
+
+bibitemlist
+
+Underfull \hbox (badness 10000) in paragraph at lines 9--10
+[]\T1/futs/m/n/12 W3C. Guía Bre-ve de la Web Se-mán-ti-ca [Do-cu-men-to en lí-n
+ea]. Dis-po-ni-ble:
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 9--10
+\T1/futs/m/n/12 http://www.w3c.es/divulgacion/guiasbreves/websemantica [Con-sul
+-ta: 2010, No-viem-
+ []
+
+
+Underfull \hbox (badness 5008) in paragraph at lines 15--16
+[]\T1/futs/m/n/12 W3C. Re-sour-ce Des-crip-tion Fra-me-work (RDF) [Do-cu-men-to
+ en lí-nea]. Dis-po-ni-ble:
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 17--18
+[]\T1/futs/m/n/12 GSI. RDF Sche-ma (RDFS) [Pre-sen-ta-ción en lí-nea]. Dis-po-n
+i-ble:
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 19--20
+[]\T1/futs/m/n/12 W3C. Pre-gun-tas Fre-cuen-tes del OWL [Do-cu-men-to en lí-nea
+]. Dis-po-ni-ble:
+ []
+
+[28
+
+
+
+]
+Underfull \hbox (badness 10000) in paragraph at lines 21--22
+[]\T1/futs/m/n/12 W3C. OWL: Use Ca-ses and Re-qui-re-ments [Do-cu-men-to en lí-
+nea]. Dis-po-ni-ble:
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 21--22
+\T1/futs/m/n/12 http://www.w3.org/TR/2004/REC-webont-req-20040210/#onto-def [Co
+n-sul-ta: 2010,
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 23--24
+[]\T1/futs/m/n/12 W3C. SPARQL Query Lan-gua-ge for RDF [Do-cu-men-to en lí-nea]
+. Dis-po-ni-ble:
+ []
+
+
+Underfull \hbox (badness 1082) in paragraph at lines 25--26
+\T1/futs/m/n/12 [Do-cu-men-to en lí-nea]. Dis-po-ni-ble: http://www.monografias
+.com/trabajos23/sistemas-
+ []
+
+
+Underfull \hbox (badness 3323) in paragraph at lines 33--34
+[]\T1/futs/m/n/12 The Friend of a Friend Pro-ject. FOAF Pro-ject [Do-cu-men-to 
+en lí-nea]. Dis-po-ni-ble:
+ []
+
+) [29] (./libro.aux (./portada.aux) (./agradecimientos.aux) (./indices.aux)
 (./resumen.aux) (./introduccion.aux) (./problema.aux) (./marcoTeorico.aux)
 (./marcoMetodologico.aux) (./desarrollo.aux) (./resultados.aux)
-(./conclusiones.aux)) ) 
+(./conclusiones.aux) (./bibliografia.aux))
+
+LaTeX Warning: There were undefined references.
+
+ ) 
 Here is how much of TeX's memory you used:
- 18254 strings out of 493848
- 302915 string characters out of 1152824
- 455687 words of memory out of 3000000
- 20973 multiletter control sequences out of 15000+50000
- 82878 words of font info for 70 fonts, out of 3000000 for 9000
+ 18306 strings out of 493848
+ 303472 string characters out of 1152824
+ 457047 words of memory out of 3000000
+ 20996 multiletter control sequences out of 15000+50000
+ 82451 words of font info for 68 fonts, out of 3000000 for 9000
  714 hyphenation exceptions out of 8191
  44i,12n,73p,1811b,489s stack positions out of 5000i,500n,10000p,200000b,50000s
-{/usr/share/texmf/fonts/enc/dvips/cm-super/cm-super-t1.e
-nc}{/usr/share/texmf-texlive/fonts/enc/dvips/base/8r.enc}</usr/share/texmf-texl
-ive/fonts/type1/adobe/utopia/putb8a.pfb></usr/share/texmf-texlive/fonts/type1/a
-dobe/utopia/putr8a.pfb></usr/share/texmf-texlive/fonts/type1/adobe/utopia/putri
-8a.pfb></usr/share/texmf/fonts/type1/public/cm-super/sfsx1200.pfb></usr/share/t
-exmf-texlive/fonts/type1/urw/zapfding/uzdr.pfb>
-Output written on libro.pdf (28 pages, 158657 bytes).
+{/usr/share/texmf/fonts/enc/dvips/cm-super/cm-super-t1.enc}{/usr/share/texmf-
+texlive/fonts/enc/dvips/base/8r.enc}</usr/share/texmf-texlive/fonts/type1/adobe
+/utopia/putb8a.pfb></usr/share/texmf-texlive/fonts/type1/adobe/utopia/putr8a.pf
+b></usr/share/texmf-texlive/fonts/type1/adobe/utopia/putri8a.pfb></usr/share/te
+xmf/fonts/type1/public/cm-super/sfsx1200.pfb></usr/share/texmf-texlive/fonts/ty
+pe1/urw/zapfding/uzdr.pfb>
+Output written on libro.pdf (31 pages, 168887 bytes).
 PDF statistics:
- 285 PDF objects out of 1000 (max. 8388607)
- 62 named destinations out of 1000 (max. 500000)
- 306 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 330 PDF objects out of 1000 (max. 8388607)
+ 86 named destinations out of 1000 (max. 500000)
+ 322 words of extra memory for PDF output out of 10000 (max. 10000000)
 
