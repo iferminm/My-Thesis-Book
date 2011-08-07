@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.1415926-1.40.10 (TeX Live 2009/Debian) (format=pdflatex 2011.7.9)  7 AUG 2011 15:31
+This is pdfTeX, Version 3.1415926-1.40.10 (TeX Live 2009/Debian) (format=pdflatex 2011.7.9)  7 AUG 2011 18:37
 entering extended mode
  %&-line parsing enabled.
 **libro.tex
@@ -1482,7 +1482,7 @@ Redoing nameref's label
 \openout2 = `portada.aux'.
 
 (./portada.tex
-</home/israelord/Dissertation/Book/my_files/images/escudoUcab.jpg, id=126, 323.
+</home/israelord/Dissertation/Book/my_files/images/escudoUcab.jpg, id=130, 323.
 2075pt x 401.5pt>
 File: /home/israelord/Dissertation/Book/my_files/images/escudoUcab.jpg Graphic 
 file (type jpg)
@@ -1823,7 +1823,7 @@ Package xcolor Warning: Incompatible color definition on input line 1.
 
 
 
-])
+] [27] [28] [29])
 \openout2 = `resultados.aux'.
 
  (./resultados.tex
@@ -1872,7 +1872,7 @@ l.1 \chapter{Resultados}
 
 Package xcolor Warning: Incompatible color definition on input line 1.
 
-) [27
+) [30
 
 
 
@@ -1925,7 +1925,7 @@ l.1 \chapter{Conclusiones y Recomendaciones}
 
 Package xcolor Warning: Incompatible color definition on input line 1.
 
-) [28
+) [31
 
 
 
@@ -1967,7 +1967,7 @@ Underfull \hbox (badness 10000) in paragraph at lines 19--20
 ]. Dis-po-ni-ble:
  []
 
-[29
+[32
 
 
 
@@ -2001,7 +2001,7 @@ Underfull \hbox (badness 3323) in paragraph at lines 33--34
 en lí-nea]. Dis-po-ni-ble:
  []
 
-) [30] (./libro.aux (./portada.aux) (./agradecimientos.aux) (./indices.aux)
+) [33] (./libro.aux (./portada.aux) (./agradecimientos.aux) (./indices.aux)
 (./resumen.aux) (./introduccion.aux) (./problema.aux) (./marcoTeorico.aux)
 (./marcoMetodologico.aux) (./desarrollo.aux) (./resultados.aux)
 (./conclusiones.aux) (./bibliografia.aux))
@@ -2010,22 +2010,25 @@ LaTeX Warning: There were undefined references.
 
  ) 
 Here is how much of TeX's memory you used:
- 18317 strings out of 493848
- 303554 string characters out of 1152824
+ 18329 strings out of 493848
+ 303676 string characters out of 1152824
  457052 words of memory out of 3000000
- 20996 multiletter control sequences out of 15000+50000
+ 20997 multiletter control sequences out of 15000+50000
  82451 words of font info for 68 fonts, out of 3000000 for 9000
  714 hyphenation exceptions out of 8191
  44i,12n,73p,1811b,489s stack positions out of 5000i,500n,10000p,200000b,50000s
-{/usr/share/texmf/fonts/enc/dvips/cm-super/cm-super-t1.enc}{/usr/share/texmf-
-texlive/fonts/enc/dvips/base/8r.enc}</usr/share/texmf-texlive/fonts/type1/adobe
-/utopia/putb8a.pfb></usr/share/texmf-texlive/fonts/type1/adobe/utopia/putr8a.pf
-b></usr/share/texmf-texlive/fonts/type1/adobe/utopia/putri8a.pfb></usr/share/te
-xmf/fonts/type1/public/cm-super/sfsx1200.pfb></usr/share/texmf-texlive/fonts/ty
-pe1/urw/zapfding/uzdr.pfb>
-Output written on libro.pdf (32 pages, 172737 bytes).
+pdfTeX warning (dest): name{section*.17} has been referenced but does not exi
+st, replaced by a fixed one
+
+{/usr/share/texmf/fonts/enc/dvips/cm-super/cm-super-t1.enc}{/usr/share/texmf-te
+xlive/fonts/enc/dvips/base/8r.enc}</usr/share/texmf-texlive/fonts/type1/adobe/u
+topia/putb8a.pfb></usr/share/texmf-texlive/fonts/type1/adobe/utopia/putr8a.pfb>
+</usr/share/texmf-texlive/fonts/type1/adobe/utopia/putri8a.pfb></usr/share/texm
+f/fonts/type1/public/cm-super/sfsx1200.pfb></usr/share/texmf-texlive/fonts/type
+1/urw/zapfding/uzdr.pfb>
+Output written on libro.pdf (35 pages, 183829 bytes).
 PDF statistics:
- 346 PDF objects out of 1000 (max. 8388607)
- 97 named destinations out of 1000 (max. 500000)
- 322 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 370 PDF objects out of 1000 (max. 8388607)
+ 108 named destinations out of 1000 (max. 500000)
+ 330 words of extra memory for PDF output out of 10000 (max. 10000000)
 
