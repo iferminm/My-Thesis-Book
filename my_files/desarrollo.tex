@@ -44,10 +44,52 @@ Al principio, se planteó llevar a cabo todo el desarrollo utilizando \textit{Py
 Debido a la situación expuesta en el párrafo anterior, se planteó evaluar el desarrollo por separado: seleccionar la mejor plataforma para desarrollar el servidor y, por otra parte, la mejor plataforma para desarrollar el cliente:
 
 \subsubsection{Servidor}
+Las dos opciones más fuertes para el desarrollo del lado del Servidor fueron \textit{Python} por un lado, por ser una plataforma 100\% libre y de código abierto y por la gran cantidad de librerías disponibles para extender el lenguaje, y por otro lado \textit{Java} representaba una opción viable, por ser una plataforma con más de 15 años de desarrollo y estándar \textit{de-facto} de la industria, a continuación se presentan las características más destacables de cada una de las opciones:
 
+\begin{itemize}
+\item \textbf{Python[17]:}
+    \begin{itemize}
+    \item Totalmente abierto y libre.
+    \item Sintaxis clara y legible.
+    \item Capacidad poderosa de introspección.
+    \item Multiparadigma: funcional, estructurado y orientado a objetos.
+    \item Tipos de dato dinámicos.
+    \item Gestión de errores basada en excepciones.
+    \item Puede extenderse a través de la escritura de módulos en lenguaje C o C++.
+    \item Gran cantidad de librerías, entre ellas varias para procesar documentos RDF.
+    \item Facilidad para interoperar con otras plataformas.
+    \item Precompilado y semi-interpretado.
+    \end{itemize}
+\item \textbf{Java[18]:}
+    \begin{itemize}
+    \item Sencillo, fue diseñado para facilitar las tareas del programador profesional.
+    \item Orientado a objetos.
+    \item Distribuido, facilita el desarrollo de aplicaciones que hacen uso de la red mediante la incorporación de clases que manejan protocolos TCP/IP.
+    \item Precompilado y semi-interpretado.
+    \item Arquitectura neutra, debido a que se ejecuta en una máquina virtual.
+    \item Portable, dado que al ``compilar" no se produce un archivo ejecutable como ocurre en los lenguajes compilados (como C, C++ y Pascal, por ejemplo), sino un \textit{bytecode} que es ejecutado por la máquina virtual, este \textit{bytecode} puede ser ejecutado en cualquier otro sistema operativo, siempre y cuando exista en él una instancia de la \textit{Máquina Virtual de Java}.
+    \item Multihilo, un programa en \textit{Java} puede ejecutar múltiples tareas de manera simultánea
+    \end{itemize}
+\end{itemize}
+
+Ambas plataformas ofrecen prestaciones muy similares, si bien el núcleo de \textit{Python} no es muy amplio, posée gran cantidad de librerías para extender su funcionalidad. De igual manera, \textit{Java} incorpora cientos de clases que lo convierten en un lenguaje amplio y poderoso.
+
+Para el servidor, se decidió trabajar con \textit{Java}, ya que, como se verá más adelante, ofrece el mejor framework para el desarrollo de aplicaciones basadas en Web Semántica y, al seleccionar dicho framework, la transitividad nos lleva a trabajar con este lenguaje.
+
+\subsubsection{Cliente}
+El cliente, es el encargado de realizar peticiones al servidor e interactuar con el usuario final, es por ello que la generación de vistas es un aspecto importante en esta parte del sistema.
+
+Para el desarrollo del cliente, fue seleccionada la plataforma \textit{Python}, por debido a todas las razones expuestas anteriormente.
 
 \subsubsection{Selección de los frameworks de desarrollo}
+Luego de realizar una investigación en la web, los frameworks de desarrollo que parecen ser más utilizados para las aplicaciones semánticas son:
 
+\begin{itemize}
+    \item \textbf{Sesame:} escrito en \textit{Java}.
+    \item \textbf{RedLand:} escrito en C.
+    \item \textbf{Jena:} escrito en \textit{Java}.
+    \item \textbf{CubicWeb:} escrito en \textit{Python}.
+\end{itemize}
 
 \subsubsection{Selección del medio de persistencia}
 
