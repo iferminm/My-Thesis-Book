@@ -13,19 +13,19 @@ Las tareas de esta iteración se basaron principalmente en la investigación y p
 La mayor parte de la investigación realizada fue descrita en el \textit{Marco Teórico} del presente trabajo. El tópico central del presente trabajo resulta ser \textit{La Web Semántica}, por ello, es necesario tomar en cuenta todos los conceptos que se desprenden de dicho tópico. Los conceptos más importantes que se desprenden de \textit{La Web Semántica} son citados a continuación:
 
 \begin{itemize}
-\item Ontologías y modelos de conocimiento.
+\item Ontologías o modelos de conocimiento.
 \item Motores de inferencia.
 \item Servicios Web.
 \end{itemize}
 
-Las \textit{Ontologías} y \textit{Modelos de conocimiento}, son el marco central de la \textit{Web Semántica}. Es lo que establece toda la estructura de metadatos en la que se basa el etiquetado e indexado de los recursos que forman parte de la base de conocimientos. Además, establece las relaciones entre las metaentidades que conforman la \textit{Ontología}. Define el vocabulario que modela el dominio del problema a ser resuelto.
+Las \textit{Ontologías} o \textit{Modelos de conocimiento}, son el marco central de la \textit{Web Semántica}. Es lo que establece toda la estructura de metadatos en la que se basa el etiquetado e indexado de los recursos que forman parte de la base de conocimientos. Además, establece las relaciones entre las metaentidades que conforman la \textit{Ontología}. Define el vocabulario que modela el dominio del problema a ser resuelto.
 
 Los \textit{Motores de inferencia} son herramientas que, dadas ciertas reglas sobre un \textit{modelo de conocimiento}, son capaces de deducir nueva información y nuevas relaciones entre las metaentidades y, por lo tanto, nuevas relaciones entre los recursos dentro de la base de conocimientos.
 
 Los \textit{Servicios Web}, si bien son un concepto que ya tiene tiempo, cobran especial importancia en la \textit{Web Semántica} pues, cuando se haga efectiva la evolución de la Web 2.0 a la Web 3.0, debe garantizarse total interoperabilidad e independencia de plataformas para que los agentes puedan ser capaces de consultar e intercambiar información y \textit{modelos de conocimiento} de distintas fuentes. Los \textit{servicios} web exponen toda la funcionalidad de un sistema a través de métodos invocables utilizando HTTP sobre TCP. Es por ello que, a través de \textit{Servicios Web}, es posible desarrollar servicios sobre cualquier plataforma y, sin importar en cual otra esté desarrollado, cualquier cliente será capaz de consumir los servicios pues la invocación se encapsula dentro de un protocolo común entre ambas plataformas.
 
 \subsubsection{El problema y los requerimientos}
-Del problema general del proyecto, puede plantearse de la siguiente manera: \textit{¿Cómo facilitar el acceso a la información acerca de Ciencias de la Computación a personas interesadas en el área}. De este problema, puede identificarse los siguientes requerimientos:
+Del problema general del proyecto, puede plantearse de la siguiente manera: \textit{¿Cómo facilitar el acceso a la información acerca de Ciencias de la Computación a personas interesadas en el área?}. De este problema, puede identificarse los siguientes requerimientos:
 
 \begin{itemize}
 \item Una interfaz web donde los usuarios puedan interactuar con el sistema.
@@ -100,6 +100,17 @@ El framework \textit{Sesame}, ofrece prestaciones técnicas similares a las de \
 Finalmente \textit{CubicWeb}, a pesar de ser un framework realmente completo pues ofrece toda la plataforma para el desarrollo: desde la persistencia, hasta la generación de vistas, pero fue descartado por no ser compatible con SPARQL, sino con su antecesor: RQL[22].
 
 \subsubsection{Selección del medio de persistencia}
-Para la persistencia de datos, si bien los manejadores de base de datos relacionales tradicionales como MySQL y Postgres ofrecen paquetes para la gestión de documentos RDF y OWL, existe una alternativa que ofrece dicha funcionalidad de manera nativa. Se trata de \textit{Virtuoso}, un manejador de base de datos con capacidad de gestionar información en formato RDF y XML, compatible con los estándares ODBC y JDBC, posée un motor de inferencia interno, puede correr en ambientes federados[23] y, además, exite una edición OpenSource bastante completa y muy bien documentada.
+Para la persistencia de datos, si bien los manejadores de base de datos relacionales tradicionales como MySQL y Postgres ofrecen paquetes para la gestión de documentos RDF y OWL, existe una alternativa que ofrece dicha funcionalidad de manera nativa. Se trata de \textit{Virtuoso}, un manejador de base de datos con capacidad de gestionar información en formato RDF y XML, compatible con los estándares ODBC y JDBC, posée un motor de inferencia interno, puede correr en ambientes federados[23] y, además, exite una edición \textbf{Open Source} bastante completa y muy bien documentada.
+
+\section{[Iteración 2]: Diseño de la arquitectura del sistema}
+
+
+\section{[Iteración 3]: Establecimiento del ambiente de desarrollo}
+En esta iteración no se desarrolló ningún tipo de software, por ello, no se fue necesaria la realización de pruebas unitarias, sin embargo, se llevó a cabo un proceso de configuración posterior a la selección de las herramientas de desarrollo.
+
+\subsection{Desarrollo de las tareas}
+El proceso que dirigirá la etapa de desarrollo, será el proceso de programación o codificación, en dos lenguajes de programación distintos: \textit{Python} del lado del \textit{Cliente} y \textit{Java} del lado del \textit{Servidor}, es por ello que el \textit{Sistema Operativo} utilizado en el equipo de desarrollo y despliegue del sistema, \textbf{debe} facilitar la instalación y configuración de las herramientas necesarias para realizar dicho trabajo, además de albergar el sistema una vez desarrollado.
+
+A nivel de \textit{Sistema Operativo}, se seleccionó una distribución de \textit{GNU/Linux}, muy popular en el mundo de los desarrolladores de software y servidores, ya que ofrece compatibilidad con \textit{Java} a través de una instancia de la máquina virtual y el intérprete de \textit{Python} usualmente viene preinstalado en todos los sistemas \textit{GNU/Linux}. La distribución seleccionada fue \textit{Debian} pues, ofrece alrededor de 30.000 paquetes de software instalables a través del gestor de paquetes \textit{aptitude} o, su front-end gráfico \textit{Synaptic}
 
 \newpage
