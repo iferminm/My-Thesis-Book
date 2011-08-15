@@ -148,19 +148,52 @@ Los tres (3) ítems enumerados anteriormente, pueden resumirse como \textit{Dete
 
 \subsubsection{Diseño}
 %TODO: decidir si coloco los documentos en bibliografía o si los referencio como apéndices
-Luego de analizar el área seleccionada y con base en las recomendaciones de la \textit{IEEE Computer Sociery} (IEEE-CS) y la \textit{Assosiation for Computing Machinery} (ACM), descritas en los documentos \textit{Computing Curricula 2001, Computer Science Final Report} para el campo de las \textit{Ciencias de la Computación} y el documento \textit{Computer Engineering 2004: Curriculum Guidelines for Undergraduate Programs in Computer Engineering}, que incorpora elementos de Ingeniería al primero, se llegó a la estructura jerárquica de clases mostrada en la  Figura \ref{fig:classHierarchy}:
+Luego de analizar el área seleccionada y con base en las recomendaciones de la \textit{IEEE Computer Sociery} (IEEE-CS) y la \textit{Assosiation for Computing Machinery} (ACM), descritas en los documentos \textit{Computing Curricula 2001, Computer Science Final Report} para el campo de las \textit{Ciencias de la Computación} y el documento \textit{Computer Engineering 2004: Curriculum Guidelines for Undergraduate Programs in Computer Engineering}, que incorpora elementos de Ingeniería al primero, se llegó a la estructura jerárquica de clases mostrada en la  Figura~\ref{classHierarchy}:
 
 \newpage
 
 \begin{figure}
     \begin{center}
+        \label{classHierarchy}
         \includegraphics[scale=0.5]{/home/israelord/Dissertation/Book/my_files/images/onto_graph_classes.jpg}
         \caption{Jerarquía de clases}
-        \label{fig:classHierarchy}
     \end{center}
 \end{figure}
 
-En RDF/OWL, todas las clases o entidades heredan por defecto de la clase \textit{Thing}, un principio similar al de la clase \textit{Object} en \textit{Java}, las líneas moradas expresan precisamente eso, una relación de \textit{herencia} entre dos entidades que puede leerse como \textit{is-a} (\textit{es-un} o \textit{es-una}), esta relación de \textit{herencia} es, además, transitiva, lo que nos permite inferir, por ejemplo, que un elemento de la clase \textit{Person}, es también un \textit{Thing} aunque no exista una relación directa, pues la clase de nivel inmediatamente superior lo es. Las clases \textit{KnowledgeArea}, \textit{Unit} y \textit{Topic}, son las mismas utilizadas en los documentos de la \textit{IEEE-CS} y la \textit{ACM} para dividir los grandes bloques de conocimiento, en unidades más pequeñas, manejables y específicas a cada nivel como se muestra en la Figura \ref{fig:knowledgeStructure}. La clase \textit{Discipline}, fue agregada para hacer referencia al marco global del problema cuyo dominio se está modelando, en este caso \textit{Ciencias de la Computación}, con el objetivo de facilitar la adaptación de este modelo a otros dominios. Por otra parte, la clase \textit{Concept}, fue agregada con el propósito de lograr una granularidad más fina y poder expresar niveles de conocimiento más específico.
+En RDF/OWL, todas las clases o entidades heredan por defecto de la clase \textit{Thing}, un principio similar al de la clase \textit{Object} en \textit{Java}, las líneas moradas expresan precisamente eso, una relación de \textit{herencia} entre dos entidades que puede leerse como \textit{is-a} (\textit{es-un} o \textit{es-una}), esta relación de \textit{herencia} es, además, transitiva, lo que nos permite inferir, por ejemplo, que un elemento de la clase \textit{Person}, es también un \textit{Thing} aunque no exista una relación directa, pues la clase de nivel inmediatamente superior lo es. Las clases \textit{KnowledgeArea}, \textit{Unit} y \textit{Topic}, son las mismas utilizadas en los documentos de la \textit{IEEE-CS} y la \textit{ACM} para dividir los grandes bloques de conocimiento, en unidades más pequeñas, manejables y específicas a cada nivel como se muestra en la Figura~\ref{knowledgeStructure}. La clase \textit{Discipline}, fue agregada para hacer referencia al marco global del problema cuyo dominio se está modelando, en este caso \textit{Ciencias de la Computación}, con el objetivo de facilitar la adaptación de este modelo a otros dominios. Por otra parte, la clase \textit{Concept}, fue agregada con el propósito de lograr una granularidad más fina y poder expresar niveles de conocimiento más específico, las clases \textit{Entity}, \textit{Person}, \textit{Team} y \textit{Enterprise} serán explicadas posteriormente.
+\newpage
+
+\begin{figure}
+    \begin{center}
+        \label{knowledgeStructure}
+        \includegraphics[scale=0.5]{/home/israelord/Dissertation/Book/my_files/images/onto_knowledge_structure.jpg}
+        \caption{Estructura del conocimiento según \textit{IEEE-CS} y \textit{ACM}}
+    \end{center}
+\end{figure}
+
+En la Figura~\ref{knowledgeStructure} se muestra la estructura del conocimiento según las recomendaciones de la \textit{ACM} y la \textit{IEEE-CS}, puede observarse que es una estructura de \textit{Contención}, donde el nivel superior engloba todo lo que se encuentra en los niveles inferiores. También, según la Figura~\ref{knowledgeStructure}, las propiedades a la derecha (las que tienen el prefijo \textit{in}) son propiedades inversas de las de la izquierda (las que tienen el prefijo \textit{has}). Anotar esas propiedades como inversas, permite que a la hora de declarar un \textit{Named Individual} (instancias) en alguna de las clases, sólo sea necesario especificar una de las dos propiedades. Toda la estructura de contención va desde la clase más general (\textit{Discipline}) que contiene a toda la estructura, hasta la clase más específica (\textit{Concept}) que es el último eslabón de la cadena. Sólo con las relaciones descritas anteriormente y representadas de manera gráfica en la Figura~\ref{knowledgeStructure}, no basta para expresar lo dicho anteriormente pues ninguno de los atributos dibujados es transitivo, además, son propiedades distintas y no expresan ningún tipo de significado una de la otra sino que tienen significado por sí solas. Para solventar esta situación, se crearon dos súper-propiedades: \textit{contents} y \textit{content-by}, ambas transitivas e inversas una de la otra y que envuelven las propiedades \textit{has} e \textit{in} respectivamente.
+
+De esta manera, además de lo descrito en la Figura~\ref{knowledgeStructure}, queda expresada la \textit{Jerarquía de Contención} mostrada en la Figura~\ref{contentHierarchy} gracias a la propiedad \textit{contents}:
+
+\begin{figure}[h]
+    \begin{center}
+        \label{contentHierarchy}
+        \textit{Discipline} \subseteq \textit{KnowledgeArea} \subseteq \textit{Unit} \subseteq \textit{Topic} \subseteq \textit{Concept}
+        \caption{Jerarquía de Contención}
+    \end{center}
+\end{figure}
+
+De la misma manera, también, a través de su relación inversa \textit{content-by}, queda expresado lo descrito en la Figura~\ref{inverseContentHierarchy}
+
+\begin{figure}[h]
+    \begin{center}
+        \label{inverseContentHierarchy}
+        \textit{Discipline} \supseteq \textit{KnowledgeArea} \supseteq \textit{Unit} \supseteq \textit{Topic} \supseteq \textit{Concept}
+        \caption{Jerarquía de Contención Iversa}
+    \end{center}
+\end{figure}
+
+En la Figura~\ref{knowledgeStructure}, se observan dos relaciones recursivas en le entidad \textit{Concept}, estas son: \textit{related-to} y una sub-propiedad \textit{preceded-by}, estas propiedades son \textit{simétrica} y \textit{transitiva} respectivamente, con esta jerarquía de propiedades, se expresa que si un concepto \textit{precede} a otro, entonces, también están \textit{relacionados}.
 
 
 
