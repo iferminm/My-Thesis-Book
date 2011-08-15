@@ -160,7 +160,7 @@ Luego de analizar el área seleccionada y con base en las recomendaciones de la 
     \end{center}
 \end{figure}
 
-En RDF/OWL, todas las clases o entidades heredan por defecto de la clase \textit{Thing}, un principio similar al de la clase \textit{Object} en \textit{Java}, las líneas moradas expresan precisamente eso, una relación de \textit{herencia} entre dos entidades que puede leerse como \textit{is-a} (\textit{es-un} o \textit{es-una}), esta relación de \textit{herencia} es, además, transitiva, lo que nos permite inferir, por ejemplo, que un elemento de la clase \textit{Person}, es también un \textit{Thing} aunque no exista una relación directa, pues la clase de nivel inmediatamente superior lo es. Las clases \textit{KnowledgeArea}, \textit{Unit} y \textit{Topic}, son las mismas utilizadas en los documentos de la \textit{IEEE-CS} y la \textit{ACM} para dividir los grandes bloques de conocimiento, en unidades más pequeñas, manejables y específicas a cada nivel como se muestra en la Figura~\ref{knowledgeStructure}. La clase \textit{Discipline}, fue agregada para hacer referencia al marco global del problema cuyo dominio se está modelando, en este caso \textit{Ciencias de la Computación}, con el objetivo de facilitar la adaptación de este modelo a otros dominios. Por otra parte, la clase \textit{Concept}, fue agregada con el propósito de lograr una granularidad más fina y poder expresar niveles de conocimiento más específico, las clases \textit{Entity}, \textit{Person}, \textit{Team} y \textit{Enterprise} serán explicadas posteriormente.
+En RDF/OWL, todas las clases o entidades heredan por defecto de la clase \textit{Thing}, un principio similar al de la clase \textit{Object} en \textit{Java}, las líneas moradas expresan precisamente eso, una relación de \textit{herencia} entre dos entidades que puede leerse como \textit{is-a} (\textit{es-un} o \textit{es-una}), esta relación de \textit{herencia} es, además, transitiva, lo que nos permite inferir, por ejemplo, que un elemento de la clase \textit{Person}, es también un \textit{Thing} aunque no exista una relación directa, pues la clase de nivel inmediatamente superior lo es. Las clases \textit{KnowledgeArea}, \textit{Unit} y \textit{Topic}, son las mismas utilizadas en los documentos de la \textit{IEEE-CS} y la \textit{ACM} para dividir los grandes bloques de conocimiento, en unidades más pequeñas, manejables y específicas a cada nivel como se muestra en la Figura~\ref{knowledgeStructure}. La clase \textit{Discipline}, fue agregada para hacer referencia al marco global del problema cuyo dominio se está modelando, en este caso \textit{Ciencias de la Computación}, con el objetivo de facilitar la adaptación de este modelo a otros dominios. Por otra parte, la clase \textit{Concept}, fue agregada con el propósito de lograr una granularidad más fina y poder expresar niveles de conocimiento más específico, las clases \textit{Entity}, \textit{Person}, \textit{Team}, \textit{Resource} y \textit{Enterprise} serán explicadas posteriormente.
 \newpage
 
 \begin{figure}
@@ -175,7 +175,7 @@ En la Figura~\ref{knowledgeStructure} se muestra la estructura del conocimiento 
 
 De esta manera, además de lo descrito en la Figura~\ref{knowledgeStructure}, queda expresada la \textit{Jerarquía de Contención} mostrada en la Figura~\ref{contentHierarchy} gracias a la propiedad \textit{contents}:
 
-\begin{figure}[h]
+\begin{figure}[!h]
     \begin{center}
         \label{contentHierarchy}
         \textit{Discipline} \subseteq \textit{KnowledgeArea} \subseteq \textit{Unit} \subseteq \textit{Topic} \subseteq \textit{Concept}
@@ -185,7 +185,7 @@ De esta manera, además de lo descrito en la Figura~\ref{knowledgeStructure}, qu
 
 De la misma manera, también, a través de su relación inversa \textit{content-by}, queda expresado lo descrito en la Figura~\ref{inverseContentHierarchy}
 
-\begin{figure}[h]
+\begin{figure}[!h]
     \begin{center}
         \label{inverseContentHierarchy}
         \textit{Discipline} \supseteq \textit{KnowledgeArea} \supseteq \textit{Unit} \supseteq \textit{Topic} \supseteq \textit{Concept}
@@ -195,6 +195,18 @@ De la misma manera, también, a través de su relación inversa \textit{content-
 
 En la Figura~\ref{knowledgeStructure}, se observan dos relaciones recursivas en le entidad \textit{Concept}, estas son: \textit{related-to} y una sub-propiedad \textit{preceded-by}, estas propiedades son \textit{simétrica} y \textit{transitiva} respectivamente, con esta jerarquía de propiedades, se expresa que si un concepto \textit{precede} a otro, entonces, también están \textit{relacionados}.
 
+Cuando se mostró la estructura de clases, quedaron varias entidades pendientes por explicar cuál es su sentido dentro de la \textit{Ontología}. Lo mejor será comenzar por las entidades \textit{Entity}, \textit{Person}, \textit{Team}, \textit{Enterprise} y \textit{Tool}, ya que están todas relacionadas entre sí como se observa en la Figura~\ref{entityRelations}:
 
+\begin{figure}[!h]
+    \begin{center}
+        \label{entityRelations}
+        \includegraphics[scale=0.5]{/home/israelord/Dissertation/Book/my_files/images/onto_entity_relations.jpg}
+        \caption{La clase \textit{Entity}}
+    \end{center}
+\end{figure}
+
+La clase \textit{Entity}, envuelve a las clases \textit{Person}, \textit{Team} y \textit{Enterprise}. Según lo expresado en la Figura~\ref{entityRelations} una instancia de \textit{Entity} puede enunciar (\textit{states}) un concepto, desarrollar (\textit{develops}) una herramienta o ser referencia (textit{is-reference-in}) en un área de conocimiento. Por herencia, cualquier sub-clase de \textit{Entity} será capaz de hacer lo mismo. Adicionalmente, se asocian herramientas (\textit{Tool}) a conceptos (\textit{Concept}) con la finalidad de poder expresar que una herramienta, implementa en la práctica un concepto teórico, por ejemplo: \textit{Python} es un \textit{Lenguaje de Programación} que abarca los paradigmas \textit{Estructurado}, \textit{Orientado a objetos} y \textit{Funcional}, todos estos, serían conceptos y \textit{Python} la herramienta que los implementa. Esto se modela para brindar una mayor expresividad al vocabulario creado a manera de poder satisfacer consultas del tipo ``Herramientas de \textit{Google} para \textit{Cloud Computing}'', por dar un ejemplo.
+
+La clase \textit{Resource}, modela los recursos que hacen referencia a alguna otra clase del modelo de conocimiento generado. Es por ello que cualquier entidad de la \textit{Ontología} puede tener un recurso asociado y, un recurso, puede estar asociado a un concepto si es muy específico, a un área de conocimiento si es más general o, incluso, a la disciplina si es lo suficientemente global como para abarcar toda su extensión.
 
 \newpage
