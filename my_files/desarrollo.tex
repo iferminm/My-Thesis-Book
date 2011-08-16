@@ -154,9 +154,9 @@ Luego de analizar el área seleccionada y con base en las recomendaciones de la 
 
 \begin{figure}
     \begin{center}
-        \label{classHierarchy}
         \includegraphics[scale=0.5]{/home/israelord/Dissertation/Book/my_files/images/onto_graph_classes.jpg}
         \caption{Jerarquía de clases}
+        \label{classHierarchy}
     \end{center}
 \end{figure}
 
@@ -165,9 +165,9 @@ En RDF/OWL, todas las clases o entidades heredan por defecto de la clase \textit
 
 \begin{figure}
     \begin{center}
-        \label{knowledgeStructure}
         \includegraphics[scale=0.5]{/home/israelord/Dissertation/Book/my_files/images/onto_knowledge_structure.jpg}
         \caption{Estructura del conocimiento según \textit{IEEE-CS} y \textit{ACM}}
+        \label{knowledgeStructure}
     \end{center}
 \end{figure}
 
@@ -177,9 +177,9 @@ De esta manera, además de lo descrito en la Figura~\ref{knowledgeStructure}, qu
 
 \begin{figure}[!h]
     \begin{center}
-        \label{contentHierarchy}
         \textit{Discipline} \subseteq \textit{KnowledgeArea} \subseteq \textit{Unit} \subseteq \textit{Topic} \subseteq \textit{Concept}
         \caption{Jerarquía de Contención}
+        \label{contentHierarchy}
     \end{center}
 \end{figure}
 
@@ -187,9 +187,9 @@ De la misma manera, también, a través de su relación inversa \textit{content-
 
 \begin{figure}[!h]
     \begin{center}
-        \label{inverseContentHierarchy}
         \textit{Discipline} \supseteq \textit{KnowledgeArea} \supseteq \textit{Unit} \supseteq \textit{Topic} \supseteq \textit{Concept}
         \caption{Jerarquía de Contención Iversa}
+        \label{inverseContentHierarchy}
     \end{center}
 \end{figure}
 
@@ -199,14 +199,33 @@ Cuando se mostró la estructura de clases, quedaron varias entidades pendientes 
 
 \begin{figure}[!h]
     \begin{center}
-        \label{entityRelations}
         \includegraphics[scale=0.5]{/home/israelord/Dissertation/Book/my_files/images/onto_entity_relations.jpg}
         \caption{La clase \textit{Entity}}
+        \label{entityRelations}
     \end{center}
 \end{figure}
 
 La clase \textit{Entity}, envuelve a las clases \textit{Person}, \textit{Team} y \textit{Enterprise}. Según lo expresado en la Figura~\ref{entityRelations} una instancia de \textit{Entity} puede enunciar (\textit{states}) un concepto, desarrollar (\textit{develops}) una herramienta o ser referencia (textit{is-reference-in}) en un área de conocimiento. Por herencia, cualquier sub-clase de \textit{Entity} será capaz de hacer lo mismo. Adicionalmente, se asocian herramientas (\textit{Tool}) a conceptos (\textit{Concept}) con la finalidad de poder expresar que una herramienta, implementa en la práctica un concepto teórico, por ejemplo: \textit{Python} es un \textit{Lenguaje de Programación} que abarca los paradigmas \textit{Estructurado}, \textit{Orientado a objetos} y \textit{Funcional}, todos estos, serían conceptos y \textit{Python} la herramienta que los implementa. Esto se modela para brindar una mayor expresividad al vocabulario creado a manera de poder satisfacer consultas del tipo ``Herramientas de \textit{Google} para \textit{Cloud Computing}'', por dar un ejemplo.
 
-La clase \textit{Resource}, modela los recursos que hacen referencia a alguna otra clase del modelo de conocimiento generado. Es por ello que cualquier entidad de la \textit{Ontología} puede tener un recurso asociado y, un recurso, puede estar asociado a un concepto si es muy específico, a un área de conocimiento si es más general o, incluso, a la disciplina si es lo suficientemente global como para abarcar toda su extensión.
+La clase \textit{Resource}, modela los recursos que hacen referencia a alguna otra clase del modelo de conocimiento generado. Es por ello que cualquier entidad de la \textit{Ontología} puede tener un recurso asociado y, un recurso, puede estar asociado a un concepto si es muy específico, a un área de conocimiento si es más general o, incluso, a la disciplina si es lo suficientemente global como para abarcar toda su extensión, ver Figura~\ref{resourceClass}.
+
+\newpage
+\begin{figure}[!h]
+    \begin{center}
+        \includegraphics[scale=0.5]{/home/israelord/Dissertation/Book/my_files/images/onto_resource_class.jpg}
+        \caption{La clase \textit{Resource}}
+        \label{resourceClass}
+    \end{center}
+\end{figure}
+
+%TODO: Hacer un diagrama de toda la ontología
+
+\subsubsection{Implementación}
+Para la implementación de la \textit{Ontología}, se utilizó el editor gráfico \textit{Protègè}, este editor permite la construcción de la \textit{Ontología} de manera gráfica, para ello, se reprodujo el modelo mostrado en la sección anterior y se aprovechó la capacidad de la herramienta para la generación de código. Se realizaron las configuraciones necesarias para que el código se genere con la sintaxis RDF/XML.
+
+Se crearon instancias desde la clase \textit{Discipline} hasta la clase \textit{Topic}, según las áreas de conocimiento, unidades y tópicos especificados en los documentos de recomendación de la \textit{IEEE-CS} y la \textit{ACM}, tomando en cuenta sólo los contenidos del núcleo de la carrera.
+
+\subsubsection{Validación}
+Describir ontoclean brevemente
 
 \newpage
