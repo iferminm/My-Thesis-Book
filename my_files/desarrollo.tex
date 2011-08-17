@@ -91,7 +91,7 @@ Luego de realizar una investigación en la web, los frameworks de desarrollo que
     \item \textbf{CubicWeb:} escrito en \textit{Python}.
 \end{itemize}
 
-En este caso, se tomó la decisión de trabajar con el framework \textit{Jena} debido a que es el que ofrece la mayor cantidad de documentación disponible en línea, además, es compatible con todos los niveles de representación semántica de metainformación (RDF, RDFS y OWL), posée varios motores de inferencia ya integrados y permite la integración con motores de inferencia externos, tiene un motor de consultas SPARQL y ofrece la posibilidad de integrarse con medios de persistencia externos, además de ser libre y de código abierto[19].
+En este caso, se tomó la decisión de trabajar con el framework \textit{Jena} debido a que es el que ofrece la mayor cantidad de documentación disponible en línea, además, es compatible con todos los niveles de representación semántica de metainformación (RDF, RDFS y OWL), posée varios motores de inferencia ya integrados y permite la integración con motores de inferencia externos, tiene un motor de consultas SPARQL y ofrece la posibilidad de integrarse con medios de persistencia externos, además de ser libre y de código abierto[19], sin embargo, los razonadores incluíos en \textit{Jena} no son compatibles con OWL, por ello se seleccionó \textit{Pellet}, un motor de inferencia externo al framework, escrito en \textit{Java} y compatible con \textit{Jena}.
 
 El framework \textit{Sesame}, ofrece prestaciones técnicas similares a las de \textit{Jena}, sin embargo, la documentación disponible en línea no es comparable con la que ofrece este último y, a pesar de ser de código abierto, es propiedad de una empresa alemana llamada \textit{ADUNA}[20] y para poder acceder a información más profunda o solicitar ayuda en algo relacionado al framework, es necesario pagar por horas de consultoría, lo que hace poco viable la utilización de \textit{Sesame} para este proyecto.
 
@@ -103,7 +103,7 @@ Finalmente \textit{CubicWeb}, a pesar de ser un framework realmente completo pue
 Para la persistencia de datos, si bien los manejadores de base de datos relacionales tradicionales como MySQL y Postgres ofrecen paquetes para la gestión de documentos RDF y OWL, existe una alternativa que ofrece dicha funcionalidad de manera nativa. Se trata de \textit{Virtuoso}, un manejador de base de datos con capacidad de gestionar información en formato RDF y XML, compatible con los estándares ODBC y JDBC, posée un motor de inferencia interno, puede correr en ambientes federados[23] y, además, exite una edición \textbf{Open Source} bastante completa y muy bien documentada.
 
 \section{[Iteración 2]: Diseño de la arquitectura del sistema}
-
+Como se explicó anteriormente, la arquitectura seleccionada para desarrollar el sistema es del tipo \textit{Cliente - Servidor}, donde la aplicación que estará en ejecusión del lado del \textit{Servidor} será desarrollada en \textit{Java}, y la aplicación que correrá del lado del \textit{Cliente} estará escrita en \textit{Python}
 
 \section{[Iteración 3]: Establecimiento del ambiente de desarrollo}
 En esta iteración no se desarrolló ningún tipo de software, por ello, no se fue necesaria la realización de pruebas unitarias, sin embargo, se llevó a cabo un proceso de configuración posterior a la selección de las herramientas de desarrollo.
@@ -226,6 +226,11 @@ Para la implementación de la \textit{Ontología}, se utilizó el editor gráfic
 Se crearon instancias desde la clase \textit{Discipline} hasta la clase \textit{Topic}, según las áreas de conocimiento, unidades y tópicos especificados en los documentos de recomendación de la \textit{IEEE-CS} y la \textit{ACM}, tomando en cuenta sólo los contenidos del núcleo de la carrera.
 
 \subsubsection{Validación}
-Describir ontoclean brevemente
+Para llevar a cabo la validación de la \textit{Ontología}, se utilizaron dos métodos para determinar dos factores distintos acerca del modelo: 
+
+\begin{itemize}
+    \item \textbf{OntoClean:} una metodología propuesta por Nicola Guarino y Christopher Welty para la generación de \textit{Ontologías Limpias}, es decir, con una estructura coherente y consistente. En este caso, se utilizó para validar la estructura, es decir, si las decisiones tomadas respecto a las entidades que fueron modeladas como clases, propiedades e individuales (instancias de clase) fueron acertadas.
+    \item \textbf{Domain Questions:} o \textit{Preguntas de Dominio}, es un método propuesto en el texto \textit{Semantic Web for the Working Ontologist}, en el que se realiza una serie de preguntas que el modelo en cuestión debe ser capaz de responder, ya sea por sí solo o a través de inferencia sobre las relaciones y propiedades de cada entidad. Con este método, se busca validar la completitud de la \textit{Ontología}, es decir, si con lo que está expresado en ella, es suficiente para cumplir con el propócito del dominio para el cual fue hecha.
+\end{itemize}
 
 \newpage
