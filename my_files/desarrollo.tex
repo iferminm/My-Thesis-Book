@@ -18,9 +18,9 @@ La mayor parte de la investigación realizada fue descrita en el \textit{Marco T
 \item Servicios Web.
 \end{itemize}
 
-Las \textit{Ontologías} o \textit{Modelos de conocimiento}, son el marco central de la \textit{Web Semántica}. Es lo que establece toda la estructura de metadatos en la que se basa el etiquetado e indexado de los recursos que forman parte de la base de conocimientos. Además, establece las relaciones entre las metaentidades que conforman la \textit{Ontología}. Define el vocabulario que modela el dominio del problema a ser resuelto.
+Las \textit{Ontologías} o \textit{Modelos de conocimiento}, son el marco central de la \textit{Web Semántica}. Es lo que establece toda la estructura de meta-datos en la que se basa el etiquetado e indexado de los recursos que forman parte de la base de conocimientos. Además, establece las relaciones entre las meta-entidades que conforman la \textit{Ontología}. Define el vocabulario que modela el dominio del problema a ser resuelto.
 
-Los \textit{Motores de inferencia} son herramientas que, dadas ciertas reglas sobre un \textit{modelo de conocimiento}, son capaces de deducir nueva información y nuevas relaciones entre las metaentidades y, por lo tanto, nuevas relaciones entre los recursos dentro de la base de conocimientos.
+Los \textit{Motores de inferencia} son herramientas que, dadas ciertas reglas sobre un \textit{modelo de conocimiento}, son capaces de deducir nueva información y nuevas relaciones entre las meta-entidades y, por lo tanto, nuevas relaciones entre los recursos dentro de la base de conocimientos.
 
 Los \textit{Servicios Web}, si bien son un concepto que ya tiene tiempo, cobran especial importancia en la \textit{Web Semántica} pues, cuando se haga efectiva la evolución de la Web 2.0 a la Web 3.0, debe garantizarse total interoperabilidad e independencia de plataformas para que los agentes puedan ser capaces de consultar e intercambiar información y \textit{modelos de conocimiento} de distintas fuentes. Los \textit{servicios} web exponen toda la funcionalidad de un sistema a través de métodos invocables utilizando HTTP sobre TCP. Es por ello que, a través de \textit{Servicios Web}, es posible desarrollar servicios sobre cualquier plataforma y, sin importar en cual otra esté desarrollado, cualquier cliente será capaz de consumir los servicios pues la invocación se encapsula dentro de un protocolo común entre ambas plataformas.
 
@@ -30,7 +30,7 @@ Del problema general del proyecto, puede plantearse de la siguiente manera: \tex
 \begin{itemize}
 \item Una interfaz web donde los usuarios puedan interactuar con el sistema.
 \item Una interfaz de edición que permita a usuarios autorizados agregar nuevos recursos y extender la base de conocimiento.
-\item Una interfaz de edición que permita a usuarios autorizados agregar metainformación nueva y extender el modelo de conocimiento.
+\item Una interfaz de edición que permita a usuarios autorizados agregar meta-información nueva y extender el modelo de conocimiento.
 \item Un componente de traducción que convierta consultas en lenguaje natural a SPARQL, el lenguaje de consultas sobre RDF/RDFS/OWL.
 \item Desarrollo de un modelo de conocimiento del área de Ciencias de la Computación e Ingeniería Informática.
 \item Un componente capaz de realizar consultas e inferencias sobre el modelo de conocimiento realizado.
@@ -60,7 +60,7 @@ Las dos opciones más fuertes para el desarrollo del lado del Servidor fueron \t
     \item Facilidad para interoperar con otras plataformas.
     \item Precompilado y semi-interpretado.
     \end{itemize}
-\item \textbf{Java:} según Joyanes y Zahonero (2002), \textit{Java}, es un lenguaje que posée las siguientes características
+\item \textbf{Java:} según Joyanes y Zahonero (2002), \textit{Java}, es un lenguaje que posee las siguientes características
     \begin{itemize}
     \item Sencillo, fue diseñado para facilitar las tareas del programador profesional.
     \item Orientado a objetos.
@@ -72,17 +72,17 @@ Las dos opciones más fuertes para el desarrollo del lado del Servidor fueron \t
     \end{itemize}
 \end{itemize}
 
-Ambas plataformas ofrecen prestaciones muy similares, si bien el núcleo de \textit{Python} no es muy amplio, posée gran cantidad de librerías para extender su funcionalidad. De igual manera, \textit{Java} incorpora cientos de clases que lo convierten en un lenguaje amplio y poderoso.
+Ambas plataformas ofrecen prestaciones muy similares, si bien el núcleo de \textit{Python} no es muy amplio, posee gran cantidad de librerías para extender su funcionalidad. De igual manera, \textit{Java} incorpora cientos de clases que lo convierten en un lenguaje amplio y poderoso.
 
-Para el servidor, se decidió trabajar con \textit{Java}, ya que, como se verá más adelante, ofrece el mejor framework para el desarrollo de aplicaciones basadas en Web Semántica y, al seleccionar dicho framework, la transitividad nos lleva a trabajar con este lenguaje.
+Para el servidor, se decidió trabajar con \textit{Java}, ya que, como se verá más adelante, ofrece el mejor Framework para el desarrollo de aplicaciones basadas en Web Semántica y, al seleccionar dicho Framework, la transitividad nos lleva a trabajar con este lenguaje.
 
 \subsubsection{Cliente}
 El cliente, es el encargado de realizar peticiones al servidor e interactuar con el usuario final, es por ello que la generación de vistas es un aspecto importante en esta parte del sistema.
 
 Para el desarrollo del cliente, fue seleccionada la plataforma \textit{Python}, debido a todas las razones expuestas anteriormente.
 
-\subsubsection{Selección de los frameworks de desarrollo}
-Luego de realizar una investigación en la web, los frameworks de desarrollo que parecen ser más utilizados para las aplicaciones semánticas son:
+\subsubsection{Selección de los Frameworks de desarrollo}
+Luego de realizar una investigación en la web, los Frameworks de desarrollo que parecen ser más utilizados para las aplicaciones semánticas son:
 
 \begin{itemize}
     \item \textbf{Sesame:} escrito en \textit{Java}.
@@ -91,19 +91,19 @@ Luego de realizar una investigación en la web, los frameworks de desarrollo que
     \item \textbf{CubicWeb:} escrito en \textit{Python}.
 \end{itemize}
 
-En este caso, se tomó la decisión de trabajar con el framework \textit{Jena} debido a que es el que ofrece la mayor cantidad de documentación disponible en línea, además, es compatible con todos los niveles de representación semántica de metainformación (RDF, RDFS y OWL), posée varios motores de inferencia ya integrados y permite la integración con motores de inferencia externos, tiene un motor de consultas SPARQL y ofrece la posibilidad de integrarse con medios de persistencia externos, además de ser libre y de código abierto (The Jena Community, S/F), sin embargo, los razonadores incluíos en \textit{Jena} no son compatibles con OWL, por ello se seleccionó \textit{Pellet}, un motor de inferencia externo al framework, escrito en \textit{Java} y compatible con \textit{Jena}.
+En este caso, se tomó la decisión de trabajar con el Framework \textit{Jena} debido a que es el que ofrece la mayor cantidad de documentación disponible en línea, además, es compatible con todos los niveles de representación semántica de meta-información (RDF, RDFS y OWL), posee varios motores de inferencia ya integrados y permite la integración con motores de inferencia externos, tiene un motor de consultas SPARQL y ofrece la posibilidad de integrarse con medios de persistencia externos, además de ser libre y de código abierto (The Jena Community, S/F), sin embargo, los razonadores incluíos en \textit{Jena} no son compatibles con OWL, por ello se seleccionó \textit{Pellet}, un motor de inferencia externo al Framework, escrito en \textit{Java} y compatible con \textit{Jena}.
 
-El framework \textit{Sesame}, ofrece prestaciones técnicas similares a las de \textit{Jena}, sin embargo, la documentación disponible en línea no es comparable con la que ofrece este último y, a pesar de ser de código abierto, es propiedad de una empresa alemana llamada \textit{ADUNA} (Autor desconocido, S/F) y para poder acceder a información más profunda o solicitar ayuda en algo relacionado al framework, es necesario pagar por horas de consultoría, lo que hace poco viable la utilización de \textit{Sesame} para este proyecto.
+El Framework \textit{Sesame}, ofrece prestaciones técnicas similares a las de \textit{Jena}, sin embargo, la documentación disponible en línea no es comparable con la que ofrece este último y, a pesar de ser de código abierto, es propiedad de una empresa alemana llamada \textit{ADUNA} (Autor desconocido, S/F) y para poder acceder a información más profunda o solicitar ayuda en algo relacionado al Framework, es necesario pagar por horas de consultoría, lo que hace poco viable la utilización de \textit{Sesame} para este proyecto.
 
-\textit{RedLand}, escrito en C y accesible desde \textit{Python}, según la comunidad \textit{RedLand} (S/F), luego de leer la documentación, es compatible sólo con RDF y, para este trabajo, el modelo de conocimientos planteado utilizaría anotaciones definidas en la especificación RDFS y, posiblemente, algunas definidas en el dialecto OWL-Lite, popr lo que fue descartado. Además, el proceso de instalación y configuración resulta complicado comparado al de las otras opciones.
+\textit{RedLand}, escrito en C y accesible desde \textit{Python}, según la comunidad \textit{RedLand} (S/F), luego de leer la documentación, es compatible sólo con RDF y, para este trabajo, el modelo de conocimientos planteado utilizaría anotaciones definidas en la especificación RDFS y, posiblemente, algunas definidas en el dialecto OWL-Lite, por lo que fue descartado. Además, el proceso de instalación y configuración resulta complicado comparado al de las otras opciones.
 
-Finalmente \textit{CubicWeb}, a pesar de ser un framework realmente completo pues ofrece toda la plataforma para el desarrollo: desde la persistencia, hasta la generación de vistas, pero fue descartado por no ser compatible con SPARQL, sino con su antecesor: RQL (CubicWeb Community, S/F).
+Finalmente \textit{CubicWeb}, a pesar de ser un Framework realmente completo pues ofrece toda la plataforma para el desarrollo: desde la persistencia, hasta la generación de vistas, pero fue descartado por no ser compatible con SPARQL, sino con su antecesor: RQL (CubicWeb Community, S/F).
 
 \subsubsection{Selección del medio de persistencia}
-Para la persistencia de datos, si bien los manejadores de base de datos relacionales tradicionales como MySQL y Postgres ofrecen paquetes para la gestión de documentos RDF y OWL, existe una alternativa que ofrece dicha funcionalidad de manera nativa. Se trata de \textit{Virtuoso}, un manejador de base de datos con capacidad de gestionar información en formato RDF y XML, compatible con los estándares ODBC y JDBC, posée un motor de inferencia interno, puede correr en ambientes federados, según información de la comunidad (Virtuoso Community, S/F) y, además, exite una edición \textbf{Open Source} bastante completa y muy bien documentada.
+Para la persistencia de datos, si bien los manejadores de base de datos relacionales tradicionales como MySQL y Postgres ofrecen paquetes para la gestión de documentos RDF y OWL, existe una alternativa que ofrece dicha funcionalidad de manera nativa. Se trata de \textit{Virtuoso}, un manejador de base de datos con capacidad de gestionar información en formato RDF y XML, compatible con los estándares ODBC y JDBC, posee un motor de inferencia interno, puede correr en ambientes federados, según información de la comunidad (Virtuoso Community, S/F) y, además, existe una edición \textbf{Open Source} bastante completa y muy bien documentada.
 
 \section{[Iteración 2]: Diseño de la arquitectura del sistema}
-Como se explicó anteriormente, la arquitectura seleccionada para desarrollar el sistema es del tipo \textit{Cliente - Servidor}, donde la aplicación que estará en ejecusión del lado del \textit{Servidor} será desarrollada en \textit{Java}, y la aplicación que correrá del lado del \textit{Cliente} estará escrita en \textit{Python}
+Como se explicó anteriormente, la arquitectura seleccionada para desarrollar el sistema es del tipo \textit{Cliente - Servidor}, donde la aplicación que estará en ejecución del lado del \textit{Servidor} será desarrollada en \textit{Java}, y la aplicación que correrá del lado del \textit{Cliente} estará escrita en \textit{Python}
 
 \section{[Iteración 3]: Establecimiento del ambiente de desarrollo}
 En esta iteración no se desarrolló ningún tipo de software, por ello, no se fue necesaria la realización de pruebas unitarias, sin embargo, se llevó a cabo un proceso de configuración posterior a la selección de las herramientas de desarrollo.
@@ -122,7 +122,7 @@ Para desarrollar las tareas de programación, se seleccionaron las siguientes he
     \item Para desarrollar en \textit{Python}, los requerimientos no son muchos, por ello, para mantenerlo simple, se seleccionó el editor \textit{VIM}, con los siguientes \textit{plugins}:
     \begin{itemize}
         \item NERDTree, que permite la visualización de la estructura de directorios del proyecto y la apertura de varios archivos de código fuente en distintas pestañas a nivel de terminal.
-        \item PyDiction, un diccionario de \textit{Python} para facilitar el autocompletado y autocorrección de código fuente.
+        \item PyDiction, un diccionario de \textit{Python} para facilitar el auto-completado y auto-corrección de código fuente.
     \end{itemize}
 \end{itemize}
 
@@ -130,10 +130,10 @@ Para desarrollar las tareas de programación, se seleccionaron las siguientes he
 %TODO: redactar aquí cómo fue configurado el ambiente
 
 \section{[Iteración 4] Análisis y desarrollo de la \textit{ontología}}
-Durante esta iteración, si bien se desarrolló una parte importante del sistema como lo es la \textit{ontología}, no se codificó software como tal. La etapa de pruebas unitarias, fue sustituída por una etapa de validación del modelo de conocimiento.
+Durante esta iteración, si bien se desarrolló una parte importante del sistema como lo es la \textit{ontología}, no se codificó software como tal. La etapa de pruebas unitarias, fue sustituida por una etapa de validación del modelo de conocimiento.
 
 \subsection{Desarrollo de las tareas}
-Para el desarrollo de la \textit{ontología} definitiva, fue necesario realizar un análisis previo para determinar cómo está estructurado el conocimiento en las áreas de \textit{Ciencias de la Computación} e \textit{Ingeniería Informática}, posteriormente, se procedió a realizar el diseño, codificación y validación de la \textit{ontología} hata llegar al modelo final.
+Para el desarrollo de la \textit{ontología} definitiva, fue necesario realizar un análisis previo para determinar cómo está estructurado el conocimiento en las áreas de \textit{Ciencias de la Computación} e \textit{Ingeniería Informática}, posteriormente, se procedió a realizar el diseño, codificación y validación de la \textit{ontología} hasta llegar al modelo final.
 
 \subsubsection{Análisis}
 Antes de realizar un diseño preliminar de la \textit{ontología}, es necesario realizar un análisis de la estructura del conocimiento en el área, con este análisis se busca:
@@ -188,7 +188,7 @@ De la misma manera, también, a través de su relación inversa \textit{content-
 \begin{figure}[!h]
     \begin{center}
         \textit{Discipline} \supseteq \textit{KnowledgeArea} \supseteq \textit{Unit} \supseteq \textit{Topic} \supseteq \textit{Concept}
-        \caption{Jerarquía de Contención Iversa}
+        \caption{Jerarquía de Contención Inversa}
         \label{inverseContentHierarchy}
     \end{center}
 \end{figure}
@@ -205,7 +205,7 @@ Cuando se mostró la estructura de clases, quedaron varias entidades pendientes 
     \end{center}
 \end{figure}
 
-La clase \textit{Entity}, envuelve a las clases \textit{Person}, \textit{Team} y \textit{Enterprise}. Según lo expresado en la Figura~\ref{entityRelations} una instancia de \textit{Entity} puede enunciar (\textit{states}) un concepto, desarrollar (\textit{develops}) una herramienta o ser referencia (textit{is-reference-in}) en un área de conocimiento. Por herencia, cualquier sub-clase de \textit{Entity} será capaz de hacer lo mismo. Adicionalmente, se asocian herramientas (\textit{Tool}) a conceptos (\textit{Concept}) con la finalidad de poder expresar que una herramienta, implementa en la práctica un concepto teórico, por ejemplo: \textit{Python} es un \textit{Lenguaje de Programación} que abarca los paradigmas \textit{Estructurado}, \textit{Orientado a objetos} y \textit{Funcional}, todos estos, serían conceptos y \textit{Python} la herramienta que los implementa. Esto se modela para brindar una mayor expresividad al vocabulario creado a manera de poder satisfacer consultas del tipo ``Herramientas de \textit{Google} para \textit{Cloud Computing}'', por dar un ejemplo.
+La clase \textit{Entity}, envuelve a las clases \textit{Person}, \textit{Team} y \textit{Enterprise}. Según lo expresado en la Figura~\ref{entityRelations} una instancia de \textit{Entity} puede enunciar (\textit{states}) un concepto, desarrollar (\textit{develops}) una herramienta o ser referencia (\textit{is-reference-in}) en un área de conocimiento. Por herencia, cualquier sub-clase de \textit{Entity} será capaz de hacer lo mismo. Adicionalmente, se asocian herramientas (\textit{Tool}) a conceptos (\textit{Concept}) con la finalidad de poder expresar que una herramienta, implementa en la práctica un concepto teórico, por ejemplo: \textit{Python} es un \textit{Lenguaje de Programación} que abarca los paradigmas \textit{Estructurado}, \textit{Orientado a objetos} y \textit{Funcional}, todos estos, serían conceptos y \textit{Python} la herramienta que los implementa. Esto se modela para brindar una mayor expresividad al vocabulario creado a manera de poder satisfacer consultas del tipo ``Herramientas de \textit{Google} para \textit{Cloud Computing}'', por dar un ejemplo.
 
 La clase \textit{Resource}, modela los recursos que hacen referencia a alguna otra clase del modelo de conocimiento generado. Es por ello que cualquier entidad de la \textit{Ontología} puede tener un recurso asociado y, un recurso, puede estar asociado a un concepto si es muy específico, a un área de conocimiento si es más general o, incluso, a la disciplina si es lo suficientemente global como para abarcar toda su extensión, ver Figura~\ref{resourceClass}.
 
@@ -230,7 +230,7 @@ Para llevar a cabo la validación de la \textit{Ontología}, se utilizaron dos m
 
 \begin{itemize}
     \item \textbf{OntoClean:} una metodología propuesta por Nicola Guarino y Christopher Welty para la generación de \textit{Ontologías Limpias}, es decir, con una estructura coherente y consistente. En este caso, se utilizó para validar la estructura, es decir, si las decisiones tomadas respecto a las entidades que fueron modeladas como clases, propiedades e individuales (instancias de clase) fueron acertadas.
-    \item \textbf{Domain Questions:} o \textit{Preguntas de Dominio}, es un método propuesto en el texto \textit{Semantic Web for the Working Ontologist}, en el que se realiza una serie de preguntas que el modelo en cuestión debe ser capaz de responder, ya sea por sí solo o a través de inferencia sobre las relaciones y propiedades de cada entidad. Con este método, se busca validar la completitud de la \textit{Ontología}, es decir, si con lo que está expresado en ella, es suficiente para cumplir con el propócito del dominio para el cual fue hecha.
+    \item \textbf{Domain Questions:} o \textit{Preguntas de Dominio}, es un método propuesto en el texto \textit{Semantic Web for the Working Ontologist}, en el que se realiza una serie de preguntas que el modelo en cuestión debe ser capaz de responder, ya sea por sí solo o a través de inferencia sobre las relaciones y propiedades de cada entidad. Con este método, se busca validar la completitud de la \textit{Ontología}, es decir, si con lo que está expresado en ella, es suficiente para cumplir con el propósito del dominio para el cual fue hecha.
 \end{itemize}
 
 \newpage
