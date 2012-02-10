@@ -15,14 +15,11 @@ La mayor parte de la investigación realizada fue descrita en el \textit{Marco T
 \begin{itemize}
 \item Ontologías o modelos de conocimiento.
 \item Motores de inferencia.
-\item Servicios Web.
 \end{itemize}
 
 Las \textit{Ontologías} o \textit{Modelos de conocimiento}, son el marco central de la \textit{Web Semántica}. Es lo que establece toda la estructura de meta-datos en la que se basa el etiquetado e indexado de los recursos que forman parte de la base de conocimientos. Además, establece las relaciones entre las meta-entidades que conforman la \textit{Ontología}. Define el vocabulario que modela el dominio del problema a ser resuelto.
 
 Los \textit{Motores de inferencia} son herramientas que, dadas ciertas reglas sobre un \textit{modelo de conocimiento}, son capaces de deducir nueva información y nuevas relaciones entre las meta-entidades y, por lo tanto, nuevas relaciones entre los recursos dentro de la base de conocimientos.
-
-Los \textit{Servicios Web}, si bien son un concepto que ya tiene tiempo, cobran especial importancia en la \textit{Web Semántica} pues, cuando se haga efectiva la evolución de la Web 2.0 a la Web 3.0, debe garantizarse total interoperabilidad e independencia de plataformas para que los agentes puedan ser capaces de consultar e intercambiar información y \textit{modelos de conocimiento} de distintas fuentes. Los \textit{servicios} web exponen toda la funcionalidad de un sistema a través de métodos invocables utilizando HTTP sobre TCP. Es por ello que, a través de \textit{Servicios Web}, es posible desarrollar servicios sobre cualquier plataforma y, sin importar en cual otra esté desarrollado, cualquier cliente será capaz de consumir los servicios pues la invocación se encapsula dentro de un protocolo común entre ambas plataformas.
 
 \subsubsection{El problema y los requerimientos}
 Del problema general del proyecto, puede plantearse de la siguiente manera: \textit{¿Cómo facilitar el acceso a la información acerca de Ciencias de la Computación a personas interesadas en el área?}. De este problema, puede identificarse los siguientes requerimientos:
@@ -47,7 +44,7 @@ Debido a la situación expuesta en el párrafo anterior, se planteó evaluar el 
 Las dos opciones más fuertes para el desarrollo del lado del Servidor fueron \textit{Python} por un lado, por ser una plataforma 100\% libre y de código abierto y por la gran cantidad de librerías disponibles para extender el lenguaje, y por otro lado \textit{Java} representaba una opción viable, por ser una plataforma con más de 15 años de desarrollo y estándar \textit{de-facto} de la industria, a continuación se presentan las características más destacables de cada una de las opciones:
 
 \begin{itemize}
-\item \textbf{Python:} según la comunidad de \textit{Python} (\textit{The Python Community}), el lenguaje cuenta con las siguientes características
+\item \textbf{Python:} según la \textit{Python Software Foundation}, el lenguaje cuenta con las siguientes características
     \begin{itemize}
     \item Totalmente abierto y libre.
     \item Sintaxis clara y legible.
@@ -60,6 +57,7 @@ Las dos opciones más fuertes para el desarrollo del lado del Servidor fueron \t
     \item Facilidad para interoperar con otras plataformas.
     \item Precompilado y semi-interpretado.
     \end{itemize}
+
 \item \textbf{Java:} según Joyanes y Zahonero (2002), \textit{Java}, es un lenguaje que posee las siguientes características
     \begin{itemize}
     \item Sencillo, fue diseñado para facilitar las tareas del programador profesional.
@@ -100,20 +98,34 @@ El Framework \textit{Sesame}, ofrece prestaciones técnicas similares a las de \
 Finalmente \textit{CubicWeb}, a pesar de ser un Framework realmente completo pues ofrece toda la plataforma para el desarrollo: desde la persistencia, hasta la generación de vistas, pero fue descartado por no ser compatible con SPARQL, sino con su antecesor: RQL (CubicWeb Community, S/F).
 
 \subsubsection{Selección del medio de persistencia}
-Para la persistencia de datos, si bien los manejadores de base de datos relacionales tradicionales como MySQL y Postgres ofrecen paquetes para la gestión de documentos RDF y OWL, existe una alternativa que ofrece dicha funcionalidad de manera nativa. Se trata de \textit{Virtuoso}, un manejador de base de datos con capacidad de gestionar información en formato RDF y XML, compatible con los estándares ODBC y JDBC, posee un motor de inferencia interno, puede correr en ambientes federados, según información de la comunidad (Virtuoso Community, S/F) y, además, existe una edición \textbf{Open Source} bastante completa y muy bien documentada.
+Para la persistencia de datos, si bien los manejadores de base de datos relacionales tradicionales como MySQL y Postgres ofrecen paquetes para la gestión de documentos RDF y OWL, existe una alternativa que ofrece dicha funcionalidad de manera nativa. Se trata de \textit{Virtuoso}, un manejador de base de datos con capacidad de gestionar información en formato RDF y XML, compatible con los estándares ODBC y JDBC, posee un motor de inferencia interno, puede correr en ambientes federados, según información de la comunidad (Virtuoso Community, S/F) y, además, existe una edición \textit{Open Source} bastante completa y muy bien documentada.
 
 \section{[Iteración 2]: Diseño de la arquitectura del sistema}
 Como se explicó anteriormente, la arquitectura seleccionada para desarrollar el sistema es del tipo \textit{Cliente - Servidor}, donde la aplicación que estará en ejecución del lado del \textit{Servidor} será desarrollada en \textit{Java}, y la aplicación que correrá del lado del \textit{Cliente} estará escrita en \textit{Python}
 
+El sistema estará constituído realmente por dos aplicaciones distintas. La primera, escrita en \textit{Java}, constituye una herramienta de administración para la ontología, la segunda, desarrollada en \textit{Python} constituye una interfaz de consultas sobre la ontología. El servidor, está constituído por el motor de persistencia que, simplemente, almacenará el modelo una vez aplicado el razonamiento a través de un motor de inferencia. Además, se cuenta con una estructura de archivos expuesta vía HTTP a través de Apache, en la que se encuentra el modelo original y el modelo razonado para ser consumidos por cualquier otra aplicación que desée hacer uso de la ontología, bien sea para aplicar razonamiento al modelo base o para hacer uso del modelo razonado y sus recursos.
+
+A continuación se presenta el diagrama de arquitectura resultante del análisis previo:
+
+\begin{figure}
+    \begin{center}
+        \includegraphics[scale=0.4]{images/sysArch.jpg}
+        \caption{Arquitectura del sistema}
+        \label{systemArchitecture}
+    \end{center}
+\end{figure}
+
+En RDF/OWL, todas las clases o entidades heredan por defecto de la clase \textit{Thing}, un principio similar al de la clase \textit{Object} en \textit{Java}, las líneas moradas expresan precisamente eso, una relación de \textit{herencia} entre dos entidades que puede leerse como \textit{is-a} (\textit{es-un} o \textit{es-una}), esta relación de \textit{herencia} es, además, transitiva, lo que nos permite inferir, por ejemplo, que un elemento de la clase \textit{Person}, es también un \textit{Thing} aunque no exista una relación directa, pues la clase de nivel inmediatamente superior lo es. Las clases \textit{KnowledgeArea}, \textit{Unit} y \textit{Topic}, son las mismas utilizadas en los documentos de la \textit{IEEE-CS} y la \textit{ACM} para dividir los grandes bloques de conocimiento, en unidades más pequeñas, manejables y específicas a cada nivel como se muestra en la Figura~\ref{knowledgeStructure}. La clase \textit{Discipline}, fue agregada para hacer referencia al marco global del problema cuyo dominio se está modelando, en este caso \textit{Ciencias de la Computación}, con el objetivo de facilitar la adaptación de este modelo a otros dominios. Por otra parte, la clase \textit{Concept}, fue agregada con el propósito de lograr una granularidad más fina y poder expresar niveles de conocimiento más específico, las clases \textit{Entity}, \textit{Person}, \textit{Team}, \textit{Resource} y \textit{Enterprise} serán explicadas posteriormente.
+
 \section{[Iteración 3]: Establecimiento del ambiente de desarrollo}
-En esta iteración no se desarrolló ningún tipo de software, por ello, no se fue necesaria la realización de pruebas unitarias, sin embargo, se llevó a cabo un proceso de configuración posterior a la selección de las herramientas de desarrollo.
+En esta iteración no se desarrolló ningún tipo de software, por ello, no fue necesaria la realización de pruebas unitarias, sin embargo, se llevó a cabo un proceso de configuración posterior a la selección de las herramientas de desarrollo.
 
 \subsection{Desarrollo de las tareas}
 El proceso que dirigirá la etapa de desarrollo, será el proceso de programación o codificación, en dos lenguajes de programación distintos: \textit{Python} del lado del \textit{Cliente} y \textit{Java} del lado del \textit{Servidor}, es por ello que el \textit{Sistema Operativo} utilizado en el equipo de desarrollo y despliegue del sistema, \textbf{debe} facilitar la instalación y configuración de las herramientas necesarias para realizar dicho trabajo, además de albergar el sistema una vez desarrollado.
 
 A nivel de \textit{Sistema Operativo}, se seleccionó una distribución de \textit{GNU/Linux}, muy popular en el mundo de los desarrolladores de software y servidores, ya que ofrece compatibilidad con \textit{Java} a través de una instancia de la máquina virtual y el intérprete de \textit{Python} usualmente viene preinstalado en todos los sistemas \textit{GNU/Linux}. La distribución seleccionada fue \textit{Debian} pues, ofrece alrededor de 30.000 paquetes de software instalables a través del gestor de paquetes \textit{aptitude} o, su front-end gráfico \textit{Synaptic} (Debian Community, S/F), además, las versiones de esta distribución de \textit{GNU/Linux} usualmente tienen años de diferencia pues la comunidad pone especial atención en liberar software que está 100\% probado y estable (Autor Desconocido, 2011).
 
-A nivel de servidores de aplicaciones, se seleccionó \textit{Jetty} para alojar la aplicación \textit{servidora}, ya que es recomendado por la misma comunidad de \textit{Jena} y \textit{Apache2} para alojar la aplicación \textit{cliente}, junto con \textit{libapache-mod-python} para activar la compatibilidad del servidor \textit{Apache2} con \textit{Python}.
+A nivel de servidores de aplicaciones, se seleccionó \textit{Tomcat} para alojar la aplicación \textit{servidora} por ser estándar \textit{de-facto} en la industria a la hora de alojar aplicaciones web desarrolladas en \textit{Java} y \textit{Apache2} para alojar la aplicación \textit{cliente}, junto con \textit{libapache-mod-python} para activar la compatibilidad del servidor \textit{Apache2} con \textit{Python}.
 
 Para desarrollar las tareas de programación, se seleccionaron las siguientes herramientas:
 \begin{itemize}
@@ -127,7 +139,9 @@ Para desarrollar las tareas de programación, se seleccionaron las siguientes he
 \end{itemize}
 
 \subsubsection{Configuración}
-%TODO: redactar aquí cómo fue configurado el ambiente
+Toda la instalación de los paquetes necesarios para el desarrollo, a excepción de los \textit{plugins} para \textit{VIM} y los entornos de desarrollo \textit{Eclipse} y \textit{Protègè}, fueron descargados, instalados y configurados a través del gestor de paquetes de Debian.
+
+En el caso de \textit{Eclipse}, no hizo falta instalarlo, pues la comunidad provée un paquete que ejecuta la aplicación, con el único requisito de tener \textit{Java} instalado. Lo mismo ocurrió en el caso de \textit{Protègè}.
 
 \section{[Iteración 4] Análisis y desarrollo de la \textit{ontología}}
 Durante esta iteración, si bien se desarrolló una parte importante del sistema como lo es la \textit{ontología}, no se codificó software como tal. La etapa de pruebas unitarias, fue sustituida por una etapa de validación del modelo de conocimiento.
@@ -232,5 +246,22 @@ Para llevar a cabo la validación de la \textit{Ontología}, se utilizaron dos m
     \item \textbf{OntoClean:} una metodología propuesta por Nicola Guarino y Christopher Welty para la generación de \textit{Ontologías Limpias}, es decir, con una estructura coherente y consistente. En este caso, se utilizó para validar la estructura, es decir, si las decisiones tomadas respecto a las entidades que fueron modeladas como clases, propiedades e individuales (instancias de clase) fueron acertadas.
     \item \textbf{Domain Questions:} o \textit{Preguntas de Dominio}, es un método propuesto en el texto \textit{Semantic Web for the Working Ontologist}, en el que se realiza una serie de preguntas que el modelo en cuestión debe ser capaz de responder, ya sea por sí solo o a través de inferencia sobre las relaciones y propiedades de cada entidad. Con este método, se busca validar la completitud de la \textit{Ontología}, es decir, si con lo que está expresado en ella, es suficiente para cumplir con el propósito del dominio para el cual fue hecha.
 \end{itemize}
+
+\section{[Iteración 5]: Desarrollo de la herramienta para administrar la ontología}
+Durante esta etapa, se desarrolló una herramienta para gestionar la ontología desarrollada en la iteración anterior. Esta herramienta no pretende ser un editor de ontologías, pues no editará ni agregará clases ni relaciones. A través de esta herramienta podrán agregarse nuevos recursos y nuevas instancias a las clases ya creadas y, además, actualizar la ontología razonada dentro del motor de persistencia.
+
+\subsection{Desarrollo de las tareas}
+Esta herramienta fue desarrollada utilizando \textit{Java} como lenguaje de programación, como motor de persistencia se utilizó \textit{Virtuoso Open Source Edition}, se utilizó \textit{Pellet} para razonar sobre la ontología y las clases provistas por \textit{Jena} para integrar todo esto.
+
+\subsubsection{Análisis}
+La herramienta desarrollada debe ser capaz de:
+
+\begin{enumerate}
+    \item Agregar, eliminar y editar recursos.
+    \item Agregar, eliminar y editar anotaciones.
+\end{enumerate}
+
+Respecto a las clases y las relaciones definidas en la ontología base, una vez que el conocimiento ha sido modelado, es realmente difícil que aparezca metainformación nueva para ser incorporada a nivel de clases. Es por ello que no se incorporó esta funcionalidad en esta herramienta, de ocurrir esto, resulta más conveniente agregar las nuevas clases a través de un editor de ontologías especializado.
+
 
 \newpage
