@@ -17,7 +17,7 @@ La mayor parte de la investigación realizada fue descrita en el \textit{Marco T
 \item Motores de inferencia.
 \end{itemize}
 
-Las \textit{Ontologías} o \textit{Modelos de conocimiento}, son el marco central de la \textit{Web Semántica}. Es lo que establece toda la estructura de meta-datos en la que se basa el etiquetado e indexado de los recursos que forman parte de la base de conocimientos. Además, establece las relaciones entre las meta-entidades que conforman la \textit{Ontología}. Define el vocabulario que modela el dominio del problema a ser resuelto.
+Las \textit{Ontologías} o \textit{Modelos de conocimiento}, son el eje central de la \textit{Web Semántica}. Es lo que establece toda la estructura de meta-datos en la que se basa el etiquetado e indexado de los recursos que forman parte de la base de conocimientos. Además, establece las relaciones entre las meta-entidades que conforman la \textit{Ontología}. Define el vocabulario que modela el dominio del problema a ser resuelto.
 
 Los \textit{Motores de inferencia} son herramientas que, dadas ciertas reglas sobre un \textit{modelo de conocimiento}, son capaces de deducir nueva información y nuevas relaciones entre las meta-entidades y, por lo tanto, nuevas relaciones entre los recursos dentro de la base de conocimientos.
 
@@ -28,20 +28,18 @@ Del problema general del proyecto, puede plantearse de la siguiente manera: \tex
 \item Una interfaz web donde los usuarios puedan interactuar con el sistema.
 \item Una interfaz de edición que permita a usuarios autorizados agregar nuevos recursos y extender la base de conocimiento.
 \item Una interfaz de edición que permita a usuarios autorizados agregar meta-información nueva y extender el modelo de conocimiento.
-\item Un componente de traducción que convierta consultas en lenguaje natural a SPARQL, el lenguaje de consultas sobre RDF/RDFS/OWL.
+\item Un componente de traducción que convierta consultas en lenguaje semi-natural a SPARQL, el lenguaje de consultas sobre RDF/RDFS/OWL.
 \item Desarrollo de un modelo de conocimiento del área de Ciencias de la Computación e Ingeniería Informática.
 \item Un componente capaz de realizar consultas e inferencias sobre el modelo de conocimiento realizado.
 \end{itemize}
 
 \subsubsection{Selección de la plataforma}
-Al ser una aplicación bajo la arquitectura Cliente-Servidor, hay que tener especial cuidado en seleccionar las mejores herramientas para desarrollar cada uno de los componente de dicha arquitectura.
-
 Al principio, se planteó llevar a cabo todo el desarrollo utilizando \textit{Python} como lenguaje de programación y las librerías nativas disponibles a través de \textit{easy\_install}, pues \textit{Python} es uno de los pocos lenguajes que ofrece librerías nativas para la manipulación de documentos RDF, además de las ventajas propias que ofrece el lenguaje desde el punto de vista sintáctico y de facilidad de aprendizaje y de programación. Pero a la hora de buscar Frameworks que permitieran el desarrollo de aplicaciones basadas en Web Semántica y Motores de Inferencia, la información y la cantidad de herramientas resultó limitada.
 
-Debido a la situación expuesta en el párrafo anterior, se planteó evaluar el desarrollo por separado: seleccionar la mejor plataforma para desarrollar el servidor y, por otra parte, la mejor plataforma para desarrollar el cliente:
+Debido a la situación expuesta en el párrafo anterior, se planteó seleccionar la mejor herramienta para cada uno de los componentes del sistema, es decir, la mejor plataforma para la \textit{herramienta para la administración de la ontología} y la mejor plataforma para el buscador como tal.
 
-\subsubsection{Servidor}
-Las dos opciones más fuertes para el desarrollo del lado del Servidor fueron \textit{Python} por un lado, por ser una plataforma 100\% libre y de código abierto y por la gran cantidad de librerías disponibles para extender el lenguaje, y por otro lado \textit{Java} representaba una opción viable, por ser una plataforma con más de 15 años de desarrollo y estándar \textit{de-facto} de la industria, a continuación se presentan las características más destacables de cada una de las opciones:
+\subsubsection{Herramienta para la administración de la ontología}
+Las dos opciones más fuertes para el desarrollo de este componente fueron \textit{Python} por un lado, por ser una plataforma 100\% libre y de código abierto y por la gran cantidad de librerías disponibles para extender el lenguaje, y por otro lado \textit{Java} representaba una opción viable, por ser una plataforma con más de 15 años de desarrollo y estándar \textit{de-facto} de la industria, a continuación se presentan las características más destacables de cada una de las opciones:
 
 \begin{itemize}
 \item \textbf{Python:} según la \textit{Python Software Foundation}, el lenguaje cuenta con las siguientes características
@@ -65,19 +63,19 @@ Las dos opciones más fuertes para el desarrollo del lado del Servidor fueron \t
     \item Distribuido, facilita el desarrollo de aplicaciones que hacen uso de la red mediante la incorporación de clases que manejan protocolos TCP/IP.
     \item Precompilado y semi-interpretado.
     \item Arquitectura neutra, debido a que se ejecuta en una máquina virtual.
-    \item Portable, dado que al ``compilar" no se produce un archivo ejecutable como ocurre en los lenguajes compilados (como C, C++ y Pascal, por ejemplo), sino un \textit{bytecode} que es ejecutado por la máquina virtual, este \textit{bytecode} puede ser ejecutado en cualquier otro sistema operativo, siempre y cuando exista en él una instancia de la \textit{Máquina Virtual de Java}.
+    \item Portable, dado que al ``compilar'' no se produce un archivo ejecutable como ocurre en los lenguajes compilados (como C, C++ y Pascal, por ejemplo), sino un \textit{bytecode} que es ejecutado por la máquina virtual, este \textit{bytecode} puede ser ejecutado en cualquier otro sistema operativo, siempre y cuando exista en él una instancia de la \textit{Máquina Virtual de Java}.
     \item Multihilo, un programa en \textit{Java} puede ejecutar múltiples tareas de manera simultánea
     \end{itemize}
 \end{itemize}
 
 Ambas plataformas ofrecen prestaciones muy similares, si bien el núcleo de \textit{Python} no es muy amplio, posee gran cantidad de librerías para extender su funcionalidad. De igual manera, \textit{Java} incorpora cientos de clases que lo convierten en un lenguaje amplio y poderoso.
 
-Para el servidor, se decidió trabajar con \textit{Java}, ya que, como se verá más adelante, ofrece el mejor Framework para el desarrollo de aplicaciones basadas en Web Semántica y, al seleccionar dicho Framework, la transitividad nos lleva a trabajar con este lenguaje.
+Para este componente, se decidió trabajar con \textit{Java}, ya que, como se verá más adelante, ofrece el mejor Framework para el desarrollo de aplicaciones basadas en Web Semántica y, al seleccionar dicho Framework, la transitividad nos lleva a trabajar con este lenguaje.
 
-\subsubsection{Cliente}
-El cliente, es el encargado de realizar peticiones al servidor e interactuar con el usuario final, es por ello que la generación de vistas es un aspecto importante en esta parte del sistema.
+\subsubsection{Buscador}
+El buscador, es el encargado de realizar peticiones al motor de consultas sobre RDF e interactuar con el usuario final, es por ello que la generación de vistas es un aspecto importante en esta parte del sistema.
 
-Para el desarrollo del cliente, fue seleccionada la plataforma \textit{Python}, debido a todas las razones expuestas anteriormente.
+Para el desarrollo de la herramienta de búsqueda, fue seleccionada la plataforma \textit{Python}, debido a todas las razones expuestas anteriormente, además de contar con una gran cantidad de \textit{frameworks} y herramientas que facilitan el desarrollo web.
 
 \subsubsection{Selección de los Frameworks de desarrollo}
 Luego de realizar una investigación en la web, los Frameworks de desarrollo que parecen ser más utilizados para las aplicaciones semánticas son:
@@ -101,9 +99,7 @@ Finalmente \textit{CubicWeb}, a pesar de ser un Framework realmente completo pue
 Para la persistencia de datos, si bien los manejadores de base de datos relacionales tradicionales como MySQL y Postgres ofrecen paquetes para la gestión de documentos RDF y OWL, existe una alternativa que ofrece dicha funcionalidad de manera nativa. Se trata de \textit{Virtuoso}, un manejador de base de datos con capacidad de gestionar información en formato RDF y XML, compatible con los estándares ODBC y JDBC, posee un motor de inferencia interno, puede correr en ambientes federados, según información de la comunidad (Virtuoso Community, S/F) y, además, existe una edición \textit{Open Source} bastante completa y muy bien documentada.
 
 \section{[Iteración 2]: Diseño de la arquitectura del sistema}
-Como se explicó anteriormente, la arquitectura seleccionada para desarrollar el sistema es del tipo \textit{Cliente - Servidor}, donde la aplicación que estará en ejecución del lado del \textit{Servidor} será desarrollada en \textit{Java}, y la aplicación que correrá del lado del \textit{Cliente} estará escrita en \textit{Python}
-
-El sistema estará constituído realmente por dos aplicaciones distintas. La primera, escrita en \textit{Java}, constituye una herramienta de administración para la ontología, la segunda, desarrollada en \textit{Python} constituye una interfaz de consultas sobre la ontología. El servidor, está constituído por el motor de persistencia que, simplemente, almacenará el modelo una vez aplicado el razonamiento a través de un motor de inferencia. Además, se cuenta con una estructura de archivos expuesta vía HTTP a través de Apache, en la que se encuentra el modelo original y el modelo razonado para ser consumidos por cualquier otra aplicación que desée hacer uso de la ontología, bien sea para aplicar razonamiento al modelo base o para hacer uso del modelo razonado y sus recursos.
+El sistema estará constituído por dos aplicaciones distintas. La primera, escrita en \textit{Java}, constituye una herramienta de administración para la ontología, la segunda, desarrollada en \textit{Python} constituye una interfaz de consultas sobre la ontología. El servidor, está constituído por el motor de persistencia que, simplemente, almacenará el modelo una vez aplicado el razonamiento a través de un motor de inferencia. Además, se cuenta con una estructura de archivos expuesta vía HTTP a través de Apache, en la que se encuentra el modelo original y el modelo razonado para ser consumidos por cualquier otra aplicación que desée hacer uso de la ontología, bien sea para aplicar razonamiento al modelo base o para hacer uso del modelo razonado y sus recursos.
 
 A continuación se presenta el diagrama de arquitectura resultante del análisis previo:
 
@@ -114,8 +110,6 @@ A continuación se presenta el diagrama de arquitectura resultante del análisis
         \label{systemArchitecture}
     \end{center}
 \end{figure}
-
-En RDF/OWL, todas las clases o entidades heredan por defecto de la clase \textit{Thing}, un principio similar al de la clase \textit{Object} en \textit{Java}, las líneas moradas expresan precisamente eso, una relación de \textit{herencia} entre dos entidades que puede leerse como \textit{is-a} (\textit{es-un} o \textit{es-una}), esta relación de \textit{herencia} es, además, transitiva, lo que nos permite inferir, por ejemplo, que un elemento de la clase \textit{Person}, es también un \textit{Thing} aunque no exista una relación directa, pues la clase de nivel inmediatamente superior lo es. Las clases \textit{KnowledgeArea}, \textit{Unit} y \textit{Topic}, son las mismas utilizadas en los documentos de la \textit{IEEE-CS} y la \textit{ACM} para dividir los grandes bloques de conocimiento, en unidades más pequeñas, manejables y específicas a cada nivel como se muestra en la Figura~\ref{knowledgeStructure}. La clase \textit{Discipline}, fue agregada para hacer referencia al marco global del problema cuyo dominio se está modelando, en este caso \textit{Ciencias de la Computación}, con el objetivo de facilitar la adaptación de este modelo a otros dominios. Por otra parte, la clase \textit{Concept}, fue agregada con el propósito de lograr una granularidad más fina y poder expresar niveles de conocimiento más específico, las clases \textit{Entity}, \textit{Person}, \textit{Team}, \textit{Resource} y \textit{Enterprise} serán explicadas posteriormente.
 
 \section{[Iteración 3]: Establecimiento del ambiente de desarrollo}
 En esta iteración no se desarrolló ningún tipo de software, por ello, no fue necesaria la realización de pruebas unitarias, sin embargo, se llevó a cabo un proceso de configuración posterior a la selección de las herramientas de desarrollo.
@@ -131,12 +125,7 @@ Para desarrollar las tareas de programación, se seleccionaron las siguientes he
 \begin{itemize}
     \item Para desarrollar en \textit{Java}, se seleccionó el Entorno Integrado de Desarrollo (IDE) \textit{Eclipse}
     \item La \textit{Ontología}, ya que debe ser escrita en RDF/OWL, se seleccionó el editor \textit{Protègè}, desarrollado en la Universidad de Stanford, este editor, permite el modelado de manera gráfica y la generación automática de código válido en varias sintaxis de RDF/OWL.
-    \item Para desarrollar en \textit{Python}, los requerimientos no son muchos, por ello, para mantenerlo simple, se seleccionó el editor \textit{VIM}, con los siguientes \textit{plugins}:
-    \begin{itemize}
-        \item NERDTree, que permite la visualización de la estructura de directorios del proyecto y la apertura de varios archivos de código fuente en distintas pestañas a nivel de terminal.
-        \item PyDiction, un diccionario de \textit{Python} para facilitar el auto-completado y auto-corrección de código fuente.
-    \end{itemize}
-\end{itemize}
+    \item Para desarrollar en \textit{Python}, los requerimientos no son muchos, por ello, para mantenerlo simple, se seleccionó el editor \textit{VIM}, con el \textit{plugin} NERDTree, que permite la visualización de la estructura de directorios del proyecto y la apertura de varios archivos de código fuente en distintas pestañas a nivel de terminal.
 
 \subsubsection{Configuración}
 Toda la instalación de los paquetes necesarios para el desarrollo, a excepción de los \textit{plugins} para \textit{VIM} y los entornos de desarrollo \textit{Eclipse} y \textit{Protègè}, fueron descargados, instalados y configurados a través del gestor de paquetes de Debian.
@@ -158,11 +147,10 @@ Antes de realizar un diseño preliminar de la \textit{ontología}, es necesario 
     \item Conocer más a fondo el dominio del problema a ser resuelto.
 \end{enumerate}
 
-Los tres (3) ítems enumerados anteriormente, pueden resumirse como \textit{Determinar la estructura del conocimiento en el área seleccionada}. Para ello, es necesario aplicar técnicas de \textit{Ingeniería del Conocimiento}. Según Norvig y Rusell (ia...) \textit{Ingeniero de Conocimiento}, es alguien que investiga un dominio concreto, aprende qué conceptos son los importantes de ese dominio y crea una representación formal de los objetos y relaciones del dominio. En este caso, el dominio ya ha sido investigado por el autor durante los años de carrera, simplemente hace falta determinar qué conceptos son importantes en el área y producir la representación formal de dichos conceptos y las relaciones que guardan entre sí.
+Los tres (3) ítems enumerados anteriormente, pueden resumirse como \textit{Determinar la estructura del conocimiento en el área seleccionada}. Para ello, es necesario aplicar técnicas de \textit{Ingeniería del Conocimiento}. Según Norvig y Rusell (2004) \textit{Ingeniero de Conocimiento}, es alguien que investiga un dominio concreto, aprende qué conceptos son los importantes de ese dominio y crea una representación formal de los objetos y relaciones del dominio. En este caso, el dominio ya ha sido investigado por el autor durante los años de carrera, simplemente hace falta determinar qué conceptos son importantes en el área y producir la representación formal de dichos conceptos y las relaciones que guardan entre sí.
 
 \subsubsection{Diseño}
-%TODO: decidir si coloco los documentos en bibliografía o si los referencio como apéndices
-Luego de analizar el área seleccionada y con base en las recomendaciones de la \textit{IEEE Computer Sociery} (IEEE-CS) y la \textit{Assosiation for Computing Machinery} (ACM), descritas en los documentos \textit{Computing Curricula 2001, Computer Science Final Report} para el campo de las \textit{Ciencias de la Computación} y el documento \textit{Computer Engineering 2004: Curriculum Guidelines for Undergraduate Programs in Computer Engineering}, que incorpora elementos de Ingeniería al primero, se llegó a la estructura jerárquica de clases mostrada en la  Figura~\ref{classHierarchy}:
+Luego de analizar el área seleccionada y con base en las recomendaciones de la \textit{IEEE Computer Sociery} (IEEE-CS) y la \textit{Assosiation for Computing Machinery} (ACM), descritas en los documentos \textit{Computing Curricula 2001, Computer Science Final Report} para el campo de las \textit{Ciencias de la Computación} y el documento \textit{Computer Engineering 2004: Curriculum Guidelines for Undergraduate Programs in Computer Engineering}, que incorpora elementos de Ingeniería al primero, se llegó a la estructura jerárquica de clases mostrada en la Figura~\ref{classHierarchy}:
 
 \newpage
 
@@ -232,8 +220,6 @@ La clase \textit{Resource}, modela los recursos que hacen referencia a alguna ot
     \end{center}
 \end{figure}
 
-%TODO: Hacer un diagrama de toda la ontología
-
 \subsubsection{Implementación}
 Para la implementación de la \textit{Ontología}, se utilizó el editor gráfico \textit{Protègè}, este editor permite la construcción de la \textit{Ontología} de manera gráfica, para ello, se reprodujo el modelo mostrado en la sección anterior y se aprovechó la capacidad de la herramienta para la generación de código. Se realizaron las configuraciones necesarias para que el código se genere con la sintaxis RDF/XML.
 
@@ -248,22 +234,74 @@ Para llevar a cabo la validación de la \textit{Ontología}, se utilizaron dos m
 \end{itemize}
 
 \section{[Iteración 5]: Desarrollo de la herramienta para administrar la ontología}
-Durante esta etapa, se desarrolló una herramienta para gestionar la ontología desarrollada en la iteración anterior. Esta herramienta no pretende ser un editor de ontologías, pues no editará ni agregará clases ni relaciones. A través de esta herramienta podrán agregarse nuevos recursos y nuevas instancias a las clases ya creadas y, además, actualizar la ontología razonada dentro del motor de persistencia.
+Durante esta etapa, se desarrolló una herramienta para gestionar la ontología desarrollada en la iteración anterior. Esta herramienta no pretende ser un editor de ontologías, pues no editará ni agregará clases ni relaciones.
+
+A través de esta herramienta podrá agregarse nuevos recursos y nuevas instancias a las clases ya creadas y, además, actualizar la ontología razonada dentro del motor de persistencia. 
+
+Finalmente, vale destacar que dado carácter experimental y prototípico del presente trabajo, se prestará especial atención al procesamiento de los datos en términos de sus relaciones, dejando en segundo plano aspectos como usabilidad, seguridad y diseño a nivel gráfico, tópicos importantes para cualquier sistema completo y que, sin lugar a dudas, deben estar presentes en la solución final pero que fueron relegados a un segundo plano para la presentación deste prototipo y se espera que dichas características sean agregadas en trabajos futuros.
 
 \subsection{Desarrollo de las tareas}
-Esta herramienta fue desarrollada utilizando \textit{Java} como lenguaje de programación, como motor de persistencia se utilizó \textit{Virtuoso Open Source Edition}, se utilizó \textit{Pellet} para razonar sobre la ontología y las clases provistas por \textit{Jena} para integrar todo esto.
+Esta herramienta fue desarrollada utilizando \textit{Java} como lenguaje de programación y \textit{Java Server Pages} (JSP) como herramienta para la generación de vistas web. Como motor de persistencia se utilizó \textit{Virtuoso Open Source Edition}, se utilizó \textit{Pellet} para razonar sobre la ontología y las clases provistas por \textit{Jena} para llevar a cabo la integración de todas estas tecnologías y manipular la ontología subyacente escrita en OWL.
 
 \subsubsection{Análisis}
-La herramienta desarrollada debe ser capaz de:
+La herramienta desarrollada es capaz de:
 
 \begin{enumerate}
-    \item Agregar, eliminar y editar recursos.
-    \item Agregar, eliminar y editar anotaciones.
+    \item Agregar, eliminar, consultar y editar recursos.
+    \item Agregar, eliminar, consultar y editar anotaciones.
 \end{enumerate}
 
-Respecto a las clases y las relaciones definidas en la ontología base, una vez que el conocimiento ha sido modelado, es realmente difícil que aparezca metainformación nueva para ser incorporada a nivel de clases. Es por ello que no se incorporó esta funcionalidad en la herramienta, de ocurrir esto, resulta más conveniente agregar las nuevas clases a través de un editor de ontologías especializado. Lo que sí es posible es la aparición de nuevos conceptos o áreas de conocimiento dentro del campo que se realiza el modelo de conocimiento, estos pueden ser agregados como instancias de las clases ya creadas.
+Respecto a las clases y las relaciones definidas en la ontología base, una vez que el conocimiento ha sido modelado, es realmente difícil que aparezca metainformación nueva para ser incorporada a nivel de clases. Es por ello que no se incorporó esta funcionalidad en la herramienta, de ocurrir esto, resulta más conveniente agregar las nuevas clases a través de un editor de ontologías especializado (como \texrit{Protègè}). Lo que sí es posible es la aparición de nuevos conceptos o áreas de conocimiento dentro del campo que se realiza el modelo de conocimiento, estos pueden ser agregados como instancias de las clases ya creadas.
 
-La arquitectura de la herramienta se presenta a continuación:
+\subsubsection{Diseño}
+La arquitectura de la herramienta es una fusión de una Arquitectura centrada en datos y una Arquitectura por capas.  
 
+Una Arquitectura centrada en datos (Data Centered Architecture) es aquella en la que los datos son el corazón del sistema y las aplicaciones acceden a ellos para consultarlos y manipularlos o modificarlos según sea el caso, por otra parte, una Arquitectura por capas (Layered Architecture), es aquella en la que se divide la aplicación en distintas capas funcionales, donde las capas más internas realizan operaciones con el sistema operativo, mientras las más externas interactúan con el usuario final (Pressman, 2010)
+
+En este caso, la herramienta modifica, consulta y manipula datos almacenados en documentos OWL y en el motor de persistencia Virtuoso, además, está dividida en tres (3) capas cada vez más cercanas a los datos, en las que la más interna realiza la extracción y escritura de los mismos a través de las clases provistas por \textit{Jena}. La capa intermedia, convierte los datos complejos de que recibe de la capa inferior a algo más simple y fácil de manipular, así como también, realiza el proceso inverso. Finalmente, la capa más externa, está compuesta por archivos JSP y clases Servlet que gestionan las vistas, muestran información e interactúan con el usuario. Se destinó, además, un paquete aislado para las pruebas unitarias.
+
+En la Figura~\ref{adminClassDiagram}, puede observarse la arquitectura diseñada para la herramienta, el funcionamiento se explicará posteriormente en la etapa de implementación.
+
+\newpage
+
+\begin{figure}[!h]
+    \begin{center}
+        \includegraphics[scale=0.4]{images/admin_app_class_diagram.jpg}
+        \caption{Diagrama de clases}
+        \label{adminClassDiagram}
+    \end{center}
+\end{figure}
+
+\subsubsection{Implementación y validación}
+Toda la codificación de la herramienta se llevó a cabo utilizando la perspectiva \textit{Java EE} (Java Enterprise Edition) de \textit{Eclipse IDE}, esta perspectiva es la que contiene los módulos necesarios para el desarrollo de aplicaciones web.
+
+Al inicio, se configuró el classpath del proyecto con las librerías del JDK y se incluyeron los paquetes precompilados (paquetes \textit{jar}) necesarios para el funcionamiento correcto de \textit{Jena Framework} y el motor de inferencia \textit{Pellet}, así como también el driver JDBC para \textit{Virtuoso}. 
+
+Las clases que conforman la arquitectura diseñada en la etapa anterior, tienen, en líneas generales las siguientes funciones:
+
+\begin{itemize}
+    \item Las clases \textit{OWLActor} y \textit{VirtuosoActor} interactúan con los medios de persistencia en OWL y Virtuoso respectivamente, extrayendo, escribiendo o actualizando datos, según sea el caso, retorna los datos con los tipos tal como son extraídos de su medio de persistencia.
+    \item La clase \textit{OntologyManager} es la encargada de realizar la transformación de los datos complejos que provéen las clases \textit{OWLActor} y \textit{VirtuosoActor} como las distintas abstracciones de recursos como las clases \textit{Individual}, \textit{Resource}, \textit{RDFNode} y \textit{Property} de \textit{Jena} a los \textit{JavaBeans} \textit{MyStatement} y \textit{Triplet}, definidos en el paquete \textit{com.admin.domain}, así como de realizar transformaciones de colecciones abstractas como el \textit{StmtIterator} a colecciones más manejables y conocidas como el \textit{TreeSet} y el \textit{ArrayList} de \textit{Java}, estos \textit{JavaBeans} y estas colecciones, son más manejables para la capa de presentación. La clase \textit{OntologyManager} también realiza el proceso inverso de conversión y la extracción de las propiedades de configuración mediante llamadas a la clase \textit{ConfigManager}, destinada a interactuar con el archivo de configuración. En pocas palabras, \textit{OntologyManager} orquesta los métodos escritos en las clases subyacentes para satisfacer las peticiones enviadas desde las vistas.
+    \item A nivel de vistas, para mostrar datos, la información va directamente desde la clase \textit{OntologyManager}, pero en el caso contrario, es decir, cuando una vista necesita comunicarse con \textit{OntologyManager}, no lo hace directamente, la solicitud es procesada por un \textit{Servlet} que despacha la operación a los métodos correctos de \textit{OntologyManager} según el evento que se haya invocado en la vista JSP avtiva.
+
+\end{itemize}
+
+El desarrollo se dividió por características en forma de historias de usuario y fueron desarrolladas en el siguiente orden:
+
+\begin{enumerate}
+    \item Yo como \textbf{usuario}, deseo poder crear recursos \textbf{para} enriquecer la ontología y extender los resultados de búsqueda.
+    \item Yo como \textbf{usuario}, deseo poder modificar recursos previamente creados \textbf{para} corregir errores en el etiquetado de manera fácil y mejorar los resultados de búsqueda.
+    \item Yo como \textbf{usuario}, deseo poder eliminar recursos \textbf{para} mantener la ontología limpia de recursos obsoletos o inexistentes.
+    \item Yo como \textbf{usuario}, deseo poder crear anotaciones \textbf{para} extender el vocabulario de la ontología e incluir nuevos conceptos.
+    \item Yo como \textbf{usuario}, deseo poder modificar anotaciones \textbf{para} corregir errores en el vocabulario y evitar resultados de búsqueda inconsistentes.
+    \item Yo como \textbf{usuario}, deseo poder eliminar anotaciones \textbf{para} mantener la ontología limpia de conceptos no vigentes o descritos de manera errada.
+\end{enumerate}
+
+Cada característica fue desarrollada ``de abajo hacia arriba'', es decir, primero se codificaron los métodos de extracción y/o escritura de datos en las clases \textit{OWLActor} o \textit{VirtuosoActor} según fuera el caso y se validaba su correcto funcionamiento mediante \textit{Pruebas Unitarias} a través de \textit{JUnit Framework}, luego se codificaba la lógica de traducción de los datos provistos por la capa de persistencia a los definidos en en paquete \textit{com.admin.domain} y el proceso inverso, así como las transformaciones necesarias para proveer datos que fueran lo más fáciles de manejar posible a la capa de presentación. Luego de eso, se construía la vista básica de los datos, la cual se enriquecía poco a poco utilizando \textit{CSS} para mejorar el estilo de la presentación de los datos y \textit{JavaScript} para realizar peticiones de datos asíncronas al servidor en los casos que hiciera falta. Finalmente, se codificaba la lógica de envío de datos en los \textit{Servlets} correspondientes.
+
+Únicamente se desarrollaron pruebas unitarias para los métodos de persistencia y en algunos de la capa de transformación, pues no en todos la lógica era lo suficientemente compleja como para requerir validar su funcionamiento a través de este método.
+
+\section{[Iteración 6]: Desarrollo del buscador}
+En esta iteración se describe el desarrollo del buscador como tal. El buscador fue desarrollado utilizando \textit{Python} como lenguaje de programación, el módulo \textit{CherryPy} para la generación de vistas web, un protocolo de comunicación basado en \textit{JSON} para la comunicación con el \textit{endpoint} de \textit{SPARQL} que provée \textit{Virtuoso} y el módulo \textit{Python Lex-Yacc} (PLY) para diseñar un lenguaje de consultas basado en anotaciones y conectores lógicos amigable para el usuario, intuitivo y que, a partir de esa gramática, se pudiera generar la o las sentencias \textit{SPARQL} necesarias para satisfacer la consulta del usuario.
 
 \newpage
