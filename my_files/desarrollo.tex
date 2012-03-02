@@ -325,7 +325,19 @@ Dado que el \textit{Procesamiento de Lenguaje Natural} es un tema que excede el 
 
 Para procesar las consultas en el lenguaje lógico, se asume que todas las consultas lingüísticas pueden escribirse, de manera formal, en \textit{Forma Normal Disyuntiva} (DFN) o en \textit{Forma Normal Conjuntiva} (CFN) (Luque et al, S/F), diseñando, para este caso, una gramática que soporte la escritura de consultas en un lenguaje lógico formal en DFN.
 
+\begin{figure}[!h]
+    \begin{center}
+        \begin{verbatim} 
+            Query     : OrQuery | AndQuery
+            OrQuery   : AndQuery || OrQuery | AndQuery
+            AndQuery  : AndQuery && UnitQuery | UnitQuery
+            UnitQuery : Annotation | ?rel: Annotation
+        \end{verbatim}
+        \caption{Gramática del lenguaje en notación BNF}
+        \label{BNFGrammar}
+    \end{center}
+\end{figure}
 
-
+En la Figura~\ref{BNFGrammar}, se aprecia la gramática formal del lenguaje de consultas diseñado, se define un \textit{Query unitatio} (UnitQuery) como aquel conformado por sólo una anotación o por una consulta de tópicos relacionados.
 
 \newpage
