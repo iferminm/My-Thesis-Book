@@ -302,6 +302,30 @@ Cada característica fue desarrollada ``de abajo hacia arriba'', es decir, prime
 Únicamente se desarrollaron pruebas unitarias para los métodos de persistencia y en algunos de la capa de transformación, pues no en todos la lógica era lo suficientemente compleja como para requerir validar su funcionamiento a través de este método.
 
 \section{[Iteración 6]: Desarrollo del buscador}
-En esta iteración se describe el desarrollo del buscador como tal. El buscador fue desarrollado utilizando \textit{Python} como lenguaje de programación, el módulo \textit{CherryPy} para la generación de vistas web, un protocolo de comunicación basado en \textit{JSON} para la comunicación con el \textit{endpoint} de \textit{SPARQL} que provée \textit{Virtuoso} y el módulo \textit{Python Lex-Yacc} (PLY) para diseñar un lenguaje de consultas basado en anotaciones y conectores lógicos amigable para el usuario, intuitivo y que, a partir de esa gramática, se pudiera generar la o las sentencias \textit{SPARQL} necesarias para satisfacer la consulta del usuario.
+En esta iteración se describe el desarrollo del buscador como tal, su diseño y su implementación utilizando \textit{Python}. Debido al carácted experimental y prototípico de este trabajo, aspectos como usabilidad y diseño gráfico fueron dejados en segundo plano para concentrar la atención en el procesamiento de la información y en el desarrollo de algoritmos que ejecuten las tareas de manera eficiente.
+
+\subsection{Desarrollo de las tareas}
+El buscador fue desarrollado utilizando \textit{Python} como lenguaje de programación, el módulo \textit{CherryPy} para la generación de vistas web, un protocolo de comunicación basado en \textit{JSON} para la comunicación con el \textit{endpoint} de \textit{SPARQL} que provée \textit{Virtuoso}, encapsulado dentro del módulo \textit{sparql-wrapper}, y el módulo \textit{Python Lex-Yacc} (PLY) para diseñar un lenguaje de consultas basado en anotaciones y conectores lógicos amigable para el usuario, intuitivo y que, a partir de esa gramática, se pudiera generar la o las sentencias \textit{SPARQL} necesarias para satisfacer la consulta del usuario, finalmente, se utilizó el \textit{framework} para desarrollo web \textit{CherryPy}, junto con el lenguaje de plantillas de \textit{Mako Templates} para generar las vistas del buscador, nuevamente, debido al carácter prototípico de este trabajo, el diseño y aspecto visual, pasan a un segundo plano, prevaleciendo el procesamiento de los datos como prioridad en este desarrollo.
+
+\subsubsection{Análisis}
+El buscador debe ser capaz de satisfacer distintos tipos de consultas, pueden clasificarse en tres (3) grupos:
+
+\begin{enumerate}
+    \item Consultas en las que se requirere que un recurso posea un conjunto de anotaciones específicas.
+    \item Consultas en las que se require que un recurso posea un conjunto de anotaciones específicas u otro.
+    \item Consultas de tópicos relacionados a una anotación específica.
+\end{enumerate}
+
+Estas consultas se hacen a través del lenguaje \textit{SPARQL}, este es un lenguaje formal en el que no resulta conveniente obligar al usuario a escribir pues, si bien su curva de aprendizaje no es muy empinada, el objetivo es realizar búsquedas utilizando tecnologías de \textit{Web Semántica} de manera sencilla, si quisieramos que el usuario introdujera consultas utilizando \textit{SPARQL} en nuestro buscador, con el \textit{endpoint} que provée \textit{Virtuoso} sería más que suficiente.
+
+\subsubsection{Diseño}
+Para empezar el desarrollo del buscador, debe resolverse primero el problema de cómo se realizarán las consultas.
+
+Dado que el \textit{Procesamiento de Lenguaje Natural} es un tema que excede el alcance de este trabajo, se decidió diseñar un lenguaje formal y, al mismo tiempo, ``amigable al usuario'' para la escritura de las consultas. Este lenguaje está basado en anotaciones conectadas a través de conectores lógicos \textit{OR} y/o \textit{AND}, además de un operador para calcular los tópicos relacionados a una anotación dada, el operador \textit{?rel:}.
+
+Para procesar las consultas en el lenguaje lógico, se asume que todas las consultas lingüísticas pueden escribirse, de manera formal, en \textit{Forma Normal Disyuntiva} (DFN) o en \textit{Forma Normal Conjuntiva} (CFN) (Luque et al, S/F), diseñando, para este caso, una gramática que soporte la escritura de consultas en un lenguaje lógico formal en DFN.
+
+
+
 
 \newpage
