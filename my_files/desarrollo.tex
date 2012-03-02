@@ -308,6 +308,14 @@ En esta iteración se describe el desarrollo del buscador como tal, su diseño y
 El buscador fue desarrollado utilizando \textit{Python} como lenguaje de programación, el módulo \textit{CherryPy} para la generación de vistas web, un protocolo de comunicación basado en \textit{JSON} para la comunicación con el \textit{endpoint} de \textit{SPARQL} que provée \textit{Virtuoso}, encapsulado dentro del módulo \textit{sparql-wrapper}, y el módulo \textit{Python Lex-Yacc} (PLY) para diseñar un lenguaje de consultas basado en anotaciones y conectores lógicos amigable para el usuario, intuitivo y que, a partir de esa gramática, se pudiera generar la o las sentencias \textit{SPARQL} necesarias para satisfacer la consulta del usuario, finalmente, se utilizó el \textit{framework} para desarrollo web \textit{CherryPy}, junto con el lenguaje de plantillas de \textit{Mako Templates} para generar las vistas del buscador, nuevamente, debido al carácter prototípico de este trabajo, el diseño y aspecto visual, pasan a un segundo plano, prevaleciendo el procesamiento de los datos como prioridad en este desarrollo.
 
 \subsubsection{Análisis}
+El buscador, es un sistema completo que debe recibir consultas, procesarlas, solicitar la información necesaria al medio de persistencia a través de sentencias \textit{SPARQL} y mostrar los resultados al usuario. Este requerimiento general, puede ser separado en las siguientes historias de usuario:
+
+\begin{enumerate}
+    \item Yo como \textbf{usuario} requiero un sistema que procese mis consultas \textit{para} conseguir recursos en el área de Ciencias de la Computación de manera sencilla.
+    \item Yo como \textbf{desarrollador} requiero de un componente que separe la consulta del usuario en partes más manejables \textbf{para} poder procesarla fácilmente.
+    \item Yo como \textbf{desarrollador} requiero de un componente que traduzca la consulta del usuario a lenguaje \textit{SPARQL} \textbf{para} poder realizar solicitudes al medio de persistencia.
+\end{enumerate}
+
 El buscador debe ser capaz de satisfacer distintos tipos de consultas, pueden clasificarse en tres (3) grupos:
 
 \begin{enumerate}
@@ -323,7 +331,7 @@ Para empezar el desarrollo del buscador, debe resolverse primero el problema de 
 
 Dado que el \textit{Procesamiento de Lenguaje Natural} es un tema que excede el alcance de este trabajo, se decidió diseñar un lenguaje formal y, al mismo tiempo, ``amigable al usuario'' para la escritura de las consultas. Este lenguaje está basado en anotaciones conectadas a través de conectores lógicos \textit{OR} y/o \textit{AND}, además de un operador para calcular los tópicos relacionados a una anotación dada, el operador \textit{?rel:}.
 
-Para procesar las consultas en el lenguaje lógico, se asume que todas las consultas lingüísticas pueden escribirse, de manera formal, en \textit{Forma Normal Disyuntiva} (DFN) o en \textit{Forma Normal Conjuntiva} (CFN) (Luque et al, S/F), diseñando, para este caso, una gramática que soporte la escritura de consultas en un lenguaje lógico formal en DFN.
+Para procesar las consultas en el lenguaje lógico, se asume que todas las consultas lingüísticas pueden escribirse, de manera formal, en \textit{Forma Normal Disyuntiva} (DNF) o en \textit{Forma Normal Conjuntiva} (CNF) (Luque et al, S/F), diseñando, para este caso, una gramática que soporte la escritura de consultas en un lenguaje lógico formal en DFN.
 
 \begin{figure}[!h]
     \begin{center}
@@ -338,6 +346,39 @@ Para procesar las consultas en el lenguaje lógico, se asume que todas las consu
     \end{center}
 \end{figure}
 
-En la Figura~\ref{BNFGrammar}, se aprecia la gramática formal del lenguaje de consultas diseñado, se define un \textit{Query unitatio} (UnitQuery) como aquel conformado por sólo una anotación o por una consulta de tópicos relacionados.
+En la Figura~\ref{BNFGrammar}, se aprecia la gramática formal del lenguaje de consultas diseñado, se define un \textit{Query unitatio} (UnitQuery) como aquel conformado por sólo una anotación o por una consulta de tópicos relacionados. La gramática expuesta en la Figura~\ref{BNFGrammar} se traduce en lo siguiente:
+
+\begin{itemize}
+    \item Un \textit{Query}, está conformado por una solicitud de tipo \textit{OR} (OrQuery) o una solicitud de tipo \textit{AND} (AndQuery).
+    \item Un \textit{OrQuery} está conformado por un \textit{AndQuery} en disyunción con un \textit{OrQuery} o un \textit{AndQuery}.
+    \item Un \textit{AndQuery} está conformado por un \textit{AndQuery} en conjunción con un \textit{UnitQuery} o un \textit{UnitQuery}.
+    \item Un \textit{UnitQuery} está conformado por una anotación o por un query de tipo \textit{?rel:}.
+\end{itemize}
+
+Esta gramática, primero separa todas las distunciones de la consulta y las agrupa en consultas individuales conjuntivas, separadas por disyunciones, es decir, el lenguaje diseñado procesa consultas en DNF.
+
+El componente diseñado corresponde al lo escrito en la historia de usuario número dos, pues toma la consulta y la separa en partes que pueden ser procesadas y traducidas posteriormente de manera más sencilla. La arquitectura completa del buscador, se presenta en la Figura~\ref{searcher_architecture}
+
+\begin{figure}[!h]
+    \begin{center}
+        \includegraphics[scale=0.45]{images/searcher_components.jpg}
+        \caption{Diagrama de componentes}
+        \label{searcher_architecture}
+    \end{center}
+\end{figure}
+
+\subsubsection{Implementación y validación}
+Toda la codificación del prototipo del sistema de búsqueda se llevó a cabo utilizando el editor \textit{VIM} (Vi Improved) con la extensión \textit{NERDTree} para navegar a través de los directorios del proyecto y abrir archivos de código fuente en pestañas distintas dentro de la misma instancia del editor en la misma línea de comandos.
+
+La primera etapa del desarrollo, se enfocó en el \textit{Parser} para el lenguaje diseñado, para ello se utilizó el módulo \textit{Python Lex-Yacc} (PLY), que permite escribir compiladores e intérpretes para gramáticas libres de contexto, que es el basamento de los lenguajes formales. PLY, contiene dos clases: \textit{lex} y \textit{yacc} que son, respectivamente, un analizador léxico y un parser.
+
+El analizador léxico, conocido también como \textit{lexer}, separa la entrada en partes conocidas como \textit{tokens}, cada vez que el \textit{lexer} retorna un \textit{token}, lo asocia con un componente léxico del lenguaje o \textit{lexema} (Aho et al, 2007), es decir, este análisis léxico de cada expresión, comprende la separación y clasificación de cada parte de dicha expresión en componentes léxicos conocidos por el intérprete.
+
+En este caso, el \textit{lexer} debe reconocer cuatro (4) \textit{lexemas} básicos: \textit{AND}, \textit{OR} y \textit{REL}, que son los operadores sobre el cuarto \textit{lexema} que compone el lenguaje: \textit{ANNOTATION}. Estos componentes léxicos se describen, a nivel de código fuente, a través de expresiones regulares. Como el público objetivo de este sistema son personas del área de Ciencias de la Computación, los símbolos para los \textit{lexemas} \textit{AND} y \textit{OR} son las secuencias de caracteres \textit(doble ampersand) y \textit{doble barra vertical} respectivamente pues son los símbolos para los operadores lógicos ``y'' y ``o''en muchos lenguajes de programación ampliamente utilizados y difundidos como \textit{C}, \textit{Java} y \textit{PHP}, por lo que debería resultar intuitivo para estas personas la utilización de esa simbología.
+
+El parser, por otra parte, realiza un análisis sintáctico, aplicando las reglas gramaticales definidas anteriormente. Este proceso de interpretación del lenguaje lleva a cabo estas dos etapas, el proceso de traducción, toma el árbol sintáctico que construye el parser y lo recorre de manera recursiva, traduciendo esas expresiones en consultas \textit{SPARQL} que son enviadas al medio de persistencia a través del módulo de \textit{Python} \textit{sparql-wraper}.
+
+Finalmente, toda la capa de presentación, fue desarrollada utilizando el módulo \textit{CherryPy}, que constituye un \textit{framework} sencillo para aplicaciones web, no incluye ninguna herramienta \textit{ORM} (Object-Relational Maping), lo que resulta conveniente ya que nuestra fuente de datos no es una Base de Datos Relacional, ni una herramienta de plantillas, por ello, se seleccionó \textit{Mako Templates} para el diseño de las vistas. Tomando el cuenta el carácter prototípico y experimental de este trabajo, el diseño gráfico y los aspectos de usabilidad fueron relegados a un segundo plano. Toda la validación del software, se llevó a cabo mediante la escritura de \textit{Pruebas Unitarias} a través del framework \textit{unittest}, que sigue una filosofía muy similar al framework \textit{JUnit}, utilizado para validar el funcionamiento correcto de los componentes de la herramienta de administración de la ontología desarrollada en la iteración anterior.
+
 
 \newpage
