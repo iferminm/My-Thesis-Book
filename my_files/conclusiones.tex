@@ -2,8 +2,24 @@
 \label{chap:conclusiones}
 
 \section{Conclusiones}
-...
+Con base en los resultados obtenidos, se puede concluir lo siguiente:
+\begin{itemize}
+    \item Las aplicación de tecnologías de \textit{Web Semántica} permite a los sistemas realizar búsquedas más específicas dentro de un dominio acotado de conocimiento. Al modelar el conocimiento de un área, pueden establecerse relaciones entre distintas entidades de conocimiento, facilitando la recuperación de información relacionada a la búsqueda que podría resultar de interés para el usuario.
+    \item El sistema de identificación basado en espacios de nombre o \textit{namespaces}, permite tener acceso a instancias o anotaciones de igual nombre, pero con significados distintos, dependiendo del \textit{namespace} en el cual se encuentre. Esto permite la utilización de más de un modelo de conocimiento en un mismo sistema de búsqueda, aún cuando pertenezcan a áreas totalmente distintas, en caso de existir ambigüedad al preguntar por cierto término, será necesario aplicar estrategias adicionales para que el sistema pueda decidir cuál es el término correcto en el contexto de la consulta.
+    \item Para poder sacar el máximo provecho a las tecnologías de la \textit{Web 3.0}, más allá de tener un buen modelo de datos relacional, es necesario definir una buena estructura de meta-datos, con relaciones coherentes y sin ambigüedades, de esta manera se garantiza que las nuevas relaciones encontradas por el \textit{Motor de Inferencia} mantienen consistencia con el modelo original.
+    \item Al desarrollar aplicaciones basadas en \textit{Web Semántica}, es importante que el modelo de conocimiento subyacente no esté aislado, resulta provechoso extenderlo y establecer relaciones con otras ontologías, de esta manera se tiene acceso a más recursos y, por lo tanto, a una cantidad mayor de información.
+    \item El esquema de modelado de datos en forma de \textit{Triples} de la \textit{Web Semántica}, no pretende sustituir la manera tradicional de modelar datos (el Modelo Relacional), simplemente plantea una manera diferente de organizar, indexar y consultar datos. En el futuro, uno podría llegar a ser complemento del otro, añadiendo mayor expresividad y mayor semántica a través de la descripción de sus elementos y extendiendo su funcionalidad.
+    \item Las ontologías en la \textit{Web 3.0}, no sólo sirven para describir páginas web, RDF es un lenguaje de descipción de \textit{Recursos}, en Internet, todo puede verse como un \textit{Recurso}, es por ello que puede describirse cualquier cosa dentro de Internet o de una red local utilizando RDF, páginas web, libros en el motor de búsqueda de una biblioteca o, incluso, servicios web.
+\end{itemize}
 
 \section{Recomendaciones}
+A continuación se lista una serie de recomendaciones que pudieran ser tomadas en cuenta para trabajos futuros en esta área:
 
-...
+\begin{itemize}
+    \item Migrar la herramienta de administración de ontologías a un \textit{Framework} que ayude a mantener el código organizado en un esquema MVC.
+    \item Realizar una operación de \textit{refactor} a fondo de la herramienta de administración de ontologías para permitir que se adapte a cualquier ontología subyacente, sin importar las clases y relaciones que este contenga. Es decir, convertir la herramienta en un administrador de ontologías genérico.
+    \item Extender la gramática definida para el buscador para darle la capacidad de procesar lenguaje natural.
+    \item Implementar modelos de conocimiento basados en la ontología desarrollada para otras disciplinas mediante la creación de las instancias necesarias.
+    \item Aprovechar la capacidad de internacionalización en \textit{OWL} para enlazar la ontología a modelos en otros idiomas.
+    \item Extender y enlazar la ontología a otros modelos, aprovechando la semántica de sinonimia de \textit{OWL}, mediante la propiedad \textit{same-as}
+\end{itemize}
