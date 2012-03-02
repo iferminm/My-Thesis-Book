@@ -1,4 +1,10 @@
 \chapter*{SINOPSIS}
 \addcontentsline{toc}{chapter}{RESUMEN} 
 
-Toda la paja en una página.
+El presente trabajo consistió en el desarrollo de una infraestructura que permitiera demostrar el funcionamiento de los estándares que conforman la \textit{Web Semántica} a través de la construcción de un modelo de conocimiento, un prototipo de buscador y de una herramienta que permitiera administrar el modelo de conocimiento mencionado.
+
+La herramienta para administrar el modelo, ofrece al usuario la posibilidad de crear nuevas instancias de conocimiento a la ontología subyacente, así como de editar instancias con información errónea o eliminar instancias no deseadas. Todo esto, aprovechando la sencillez del API para \textit{RDF/OWL} ofrecido por \textit{Jena}.
+
+La infraestructura de mantenimiento, permite además realizar inferencia sobre la ontología, descubriendo así nuevas relaciones existentes entre las entidades de conocimiento modeladas, facilitando la recuperación de información relacionada directa o indirectamente a algún concepto que se esté buscando. Este modelo razonado permanece en el tiempo gracias a \textit{Virtuoso}, un manejador de Base de Datos que soporta el almacenamiento de grafos RDF y el respectivo lenguaje de consultas sobre estos grafos: \textit{SPARQL}
+
+Finalmente, el prototipo de buscador, permite realizar consultas utilizando una gramática libre de contexto basada en \textit{Formas Normales Disyuntivas}, para su posterior traducción a \textit{SPARQL} y envío al medio de persistencia de RDF para la recuperación de los datos que satisfagan la consulta realizada por el usuario. Todo esto desarrollado bajo un esquema metodológico ágil, iterativo e incremental.
