@@ -177,6 +177,7 @@ En la Figura~\ref{knowledgeStructure} se muestra la estructura del conocimiento 
 
 De esta manera, además de lo descrito en la Figura~\ref{knowledgeStructure}, queda expresada la \textit{Jerarquía de Contención} mostrada en la Figura~\ref{contentHierarchy} gracias a la propiedad \textit{contents}:
 
+
 \begin{figure}[!h]
     \begin{center}
         \textit{Discipline} \subseteq \textit{KnowledgeArea} \subseteq \textit{Unit} \subseteq \textit{Topic} \subseteq \textit{Concept}
@@ -185,13 +186,14 @@ De esta manera, además de lo descrito en la Figura~\ref{knowledgeStructure}, qu
     \end{center}
 \end{figure}
 
-De la misma manera, también, a través de su relación inversa \textit{content-by}, queda expresado lo descrito en la Figura~\ref{inverseContentHierarchy}
+De la misma manera, también, a través de su relación inversa \textit{content-by}, queda expresado lo descrito en la Figura 4.5
+
 
 \begin{figure}[!h]
     \begin{center}
         \textit{Discipline} \supseteq \textit{KnowledgeArea} \supseteq \textit{Unit} \supseteq \textit{Topic} \supseteq \textit{Concept}
         \caption{Jerarquía de Contención Inversa}
-        \label{inverseContentHierarchy}
+        \label{inverseContent}
     \end{center}
 \end{figure}
 
@@ -229,7 +231,7 @@ Se crearon instancias desde la clase \textit{Discipline} hasta la clase \textit{
 Para llevar a cabo la validación de la \textit{Ontología}, se utilizaron dos métodos para determinar dos factores distintos acerca del modelo: 
 
 \begin{itemize}
-    \item \textbf{OntoClean:} una metodología propuesta por Nicola Guarino y Christopher Welty para la generación de \textit{Ontologías Limpias}, es decir, con una estructura coherente y consistente. En este caso, se utilizó para validar la estructura, es decir, si las decisiones tomadas respecto a las entidades que fueron modeladas como clases, propiedades e individuales (instancias de clase) fueron acertadas.
+    \item \textbf{OntoClean:} una metodología propuesta por Guarino y Welty (s/f) para la generación de \textit{Ontologías Limpias}, es decir, con una estructura coherente y consistente. En este caso, se utilizó para validar la estructura, es decir, si las decisiones tomadas respecto a las entidades que fueron modeladas como clases, propiedades e individuales (instancias de clase) fueron acertadas.
     \item \textbf{Domain Questions:} o \textit{Preguntas de Dominio}, es un método propuesto en el texto \textit{Semantic Web for the Working Ontologist}, en el que se realiza una serie de preguntas que el modelo en cuestión debe ser capaz de responder, ya sea por sí solo o a través de inferencia sobre las relaciones y propiedades de cada entidad. Con este método, se busca validar la completitud de la \textit{Ontología}, es decir, si con lo que está expresado en ella, es suficiente para cumplir con el propósito del dominio para el cual fue hecha.
 \end{itemize}
 
@@ -297,7 +299,7 @@ El desarrollo se dividió por características en forma de historias de usuario 
     \item Yo como \textbf{usuario}, deseo poder eliminar anotaciones \textbf{para} mantener la ontología limpia de conceptos no vigentes o descritos de manera errada.
 \end{enumerate}
 
-Cada característica fue desarrollada ``de abajo hacia arriba'', es decir, primero se codificaron los métodos de extracción y/o escritura de datos en las clases \textit{OWLActor} o \textit{VirtuosoActor} según fuera el caso y se validaba su correcto funcionamiento mediante \textit{Pruebas Unitarias} a través de \textit{JUnit Framework}, luego se codificaba la lógica de traducción de los datos provistos por la capa de persistencia a los definidos en en paquete \textit{com.admin.domain} y el proceso inverso, así como las transformaciones necesarias para proveer datos que fueran lo más fáciles de manejar posible a la capa de presentación. Luego de eso, se construía la vista básica de los datos, la cual se enriquecía poco a poco utilizando \textit{CSS} para mejorar el estilo de la presentación de los datos y \textit{JavaScript} para realizar peticiones de datos asíncronas al servidor en los casos que hiciera falta. Finalmente, se codificaba la lógica de envío de datos en los \textit{Servlets} correspondientes.
+Cada característica fue desarrollada ``de abajo hacia arriba'', es decir, codificó en primera instancia los métodos de extracción y/o escritura de datos en las clases \textit{OWLActor} o \textit{VirtuosoActor} según fuera el caso y se validaba su correcto funcionamiento mediante \textit{Pruebas Unitarias} a través de \textit{JUnit Framework}, luego se codificaba la lógica de traducción de los datos provistos por la capa de persistencia a los definidos en en paquete \textit{com.admin.domain} y el proceso inverso, así como las transformaciones necesarias para proveer datos que fueran lo más fáciles de manejar posible a la capa de presentación. Luego de eso, se construía la vista básica de los datos, la cual se enriquecía poco a poco utilizando \textit{CSS} para mejorar el estilo de la presentación de los datos y \textit{JavaScript} para realizar peticiones de datos asíncronas al servidor en los casos que hiciera falta. Finalmente, se codificaba la lógica de envío de datos en los \textit{Servlets} correspondientes.
 
 Únicamente se desarrollaron pruebas unitarias para los métodos de persistencia y en algunos de la capa de transformación, pues no en todos la lógica era lo suficientemente compleja como para requerir validar su funcionamiento a través de este método.
 
