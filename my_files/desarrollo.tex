@@ -331,7 +331,7 @@ Estas consultas se hacen a través del lenguaje \textit{SPARQL}, este es un leng
 \subsubsection{Diseño}
 Para empezar el desarrollo del buscador, debe resolverse primero el problema de cómo se realizarán las consultas.
 
-Dado que el \textit{Procesamiento de Lenguaje Natural} es un tema que excede el alcance de este trabajo, se decidió diseñar un lenguaje formal y, al mismo tiempo, ``amigable al usuario'' para la escritura de las consultas. Este lenguaje está basado en anotaciones conectadas a través de conectores lógicos \textit{OR} y/o \textit{AND}, además de un operador para calcular los tópicos relacionados a una anotación dada, el operador \textit{?rel:}.
+Dado que el \textit{Procesamiento de Lenguaje Natural} es un tema que excede el alcance de este trabajo, se decidió diseñar un lenguaje formal y, al mismo tiempo, ``amigable al usuario'' para la escritura de las consultas. Este lenguaje está basado en anotaciones conectadas a través de conectores lógicos \textit{OR}, \textit{AND} y \textit{NOT}, además de un operador para calcular los tópicos relacionados a una anotación dada, el operador \textit{?rel:}.
 
 Para procesar las consultas en el lenguaje lógico, se asume que todas las consultas lingüísticas pueden escribirse, de manera formal, en \textit{Forma Normal Disyuntiva} (DNF) o en \textit{Forma Normal Conjuntiva} (CNF) (Luque et al, s/f), diseñando, para este caso, una gramática que soporte la escritura de consultas en un lenguaje lógico formal en DFN.
 
@@ -339,9 +339,9 @@ Para procesar las consultas en el lenguaje lógico, se asume que todas las consu
     \begin{center}
         \begin{verbatim} 
             Query     : OrQuery | AndQuery
-            OrQuery   : AndQuery || OrQuery | AndQuery
+            OrQuery   : AndQuery \|\| OrQuery | AndQuery
             AndQuery  : AndQuery && UnitQuery | UnitQuery
-            UnitQuery : Annotation | ?rel: Annotation
+            UnitQuery : Annotation | \?rel: Annotation | \- Annotation
         \end{verbatim}
         \caption{Gramática del lenguaje en notación BNF}
         \label{BNFGrammar}
@@ -354,7 +354,7 @@ En la Figura~\ref{BNFGrammar}, se aprecia la gramática formal del lenguaje de c
     \item Un \textit{Query}, está conformado por una solicitud de tipo \textit{OR} (OrQuery) o una solicitud de tipo \textit{AND} (AndQuery).
     \item Un \textit{OrQuery} está conformado por un \textit{AndQuery} en disyunción con un \textit{OrQuery} o un \textit{AndQuery}.
     \item Un \textit{AndQuery} está conformado por un \textit{AndQuery} en conjunción con un \textit{UnitQuery} o un \textit{UnitQuery}.
-    \item Un \textit{UnitQuery} está conformado por una anotación o por un query de tipo \textit{?rel:}.
+    \item Un \textit{UnitQuery} está conformado por una anotación o por un query de tipo \textit{?rel:} o por un query de tipo \textit{NOT}.
 \end{itemize}
 
 Esta gramática, primero separa todas las disyunciones de la consulta y las agrupa en consultas individuales conjuntivas, separadas por disyunciones, es decir, el lenguaje diseñado procesa consultas en DNF.
@@ -363,7 +363,7 @@ El componente diseñado corresponde al lo escrito en la historia de usuario núm
 
 \begin{figure}[!h]
     \begin{center}
-        \includegraphics[scale=0.45]{images/searcher_components.jpg}
+        \includegraphics[scale=0.4]{images/searcher_components.jpg}
         \caption{Diagrama de componentes}
         \label{searcher_architecture}
     \end{center}
@@ -376,7 +376,21 @@ La primera etapa del desarrollo, se enfocó en el \textit{Parser} para el lengua
 
 El analizador léxico, conocido también como \textit{lexer}, separa la entrada en partes conocidas como \textit{tokens}, cada vez que el \textit{lexer} retorna un \textit{token}, lo asocia con un componente léxico del lenguaje o \textit{lexema} (Aho et al, 2007), es decir, este análisis léxico de cada expresión, comprende la separación y clasificación de cada parte de dicha expresión en componentes léxicos conocidos por el intérprete.
 
-En este caso, el \textit{lexer} debe reconocer cuatro (4) \textit{lexemas} básicos: \textit{AND}, \textit{OR} y \textit{REL}, que son los operadores sobre el cuarto \textit{lexema} que compone el lenguaje: \textit{ANNOTATION}. Estos componentes léxicos se describen, a nivel de código fuente, a través de expresiones regulares. Como el público objetivo de este sistema son personas del área de Ciencias de la Computación, los símbolos para los \textit{lexemas} \textit{AND} y \textit{OR} son las secuencias de caracteres \textit(doble ampersand) y \textit{doble barra vertical} respectivamente pues son los símbolos para los operadores lógicos ``y'' y ``o''en muchos lenguajes de programación ampliamente utilizados y difundidos como \textit{C}, \textit{Java} y \textit{PHP}, por lo que debería resultar intuitivo para estas personas la utilización de esa simbología.
+En este caso, el \textit{lexer} debe reconocer cinco (5) \textit{lexemas} básicos: \textit{AND}, \textit{OR}, \textit{NOT} y \textit{REL}, que son los operadores sobre el quinto \textit{lexema} que compone el lenguaje: \textit{ANNOTATION}. Estos componentes léxicos se describen, a nivel de código fuente, a través de expresiones regulares. Como el público objetivo de este sistema son personas del área de Ciencias de la Computación, los símbolos para los \textit{lexemas} \textit{AND} y \textit{OR} son las secuencias de caracteres \textit(doble ampersand) y \textit{doble barra vertical} respectivamente pues son los símbolos para los operadores lógicos ``y'' y ``o''en muchos lenguajes de programación ampliamente utilizados y difundidos como \textit{C}, \textit{Java} y \textit{PHP}, por lo que debería resultar intuitivo para estas personas la utilización de esa simbología. Por otra parte, el operador \textit{?rel:} debería leerse como ``pregunta por lo relacionado a:'', es por ello que se seleccionó esa secuencia de caracteres, finalmente, el operador \textit{NOT}, está representado por el operador aritmético de sustracción.
+
+Una consulta utilizando este lenguaje debería lucir como lo escrito en la Figura~\ref{SimpleQueryExample}
+
+\begin{figure}[!h]
+    \begin{center}
+        \begin{verbatim}
+        web services && java || web services && python && -SOAP
+        \end{verbatim}
+        \caption{Ejemplo de query utilizando el lenguaje especificado}
+        \label{SimpleQueryExample}
+    \end{center}
+\end{figure}
+
+Respecto a consultas ilegales, un query de tipo \textit{NOT} generará un error si no está dentro de un query de tipo \textit{AND}, esto es porque internamente al interpretar la consulta, el query de negación es interpretado como un modificador \textit{FILTER} al ser traducido a \textit{SPARQL}. De la misma manera, una conjunción de expresiones \textit{?rel:} no está permitida pues el intérprete, en tiempo de traducción, calcula los elementos relacionados a la anotación que acompaña al operador y genera una expresión de tipo \textit{OR} con dichos elementos.
 
 El parser, por otra parte, realiza un análisis sintáctico, aplicando las reglas gramaticales definidas anteriormente. Este proceso de interpretación del lenguaje lleva a cabo estas dos etapas, el proceso de traducción, toma el árbol sintáctico que construye el parser y lo recorre de manera recursiva, traduciendo esas expresiones en consultas \textit{SPARQL} que son enviadas al medio de persistencia a través del módulo de \textit{Python} \textit{sparql-wrapper}.
 
