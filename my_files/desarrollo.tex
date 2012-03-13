@@ -146,10 +146,13 @@ Antes de realizar un diseño preliminar de la \textit{ontología}, es necesario 
 \begin{enumerate}
     \item Establecer las \textit{entidades} que conformarán la \textit{ontología}.
     \item Determinar las \textit{relaciones} existentes entre las \textit{entidades}.
+    \item Determinar las \textit{propiedades} de las \textit{relaciones} existentes entre las \textit{entidades}.
     \item Conocer más a fondo el dominio del problema a ser resuelto.
 \end{enumerate}
 
-Los tres (3) ítem enumerados anteriormente, pueden resumirse como \textit{Determinar la estructura del conocimiento en el área seleccionada}. Para ello, es necesario aplicar técnicas de \textit{Ingeniería del Conocimiento}. Según Norvig y Rusell (2004) \textit{Ingeniero de Conocimiento}, es alguien que investiga un dominio concreto, aprende qué conceptos son los importantes de ese dominio y crea una representación formal de los objetos y relaciones del dominio. En este caso, el dominio ya ha sido investigado por el autor durante los años de carrera, simplemente hace falta determinar qué conceptos son importantes en el área y producir la representación formal de dichos conceptos y las relaciones que guardan entre sí.
+El item número uno, se refiere a determinar las clases \textit{RDF} que conformarán el modelo de conocimiento. A través del número dos, se desea obtener la \textit{jerarquía de clases} de las entidades junto con las relaciones entre ellas a través de \textit{RDFS}, es decir, si se hace analogía con el esquema Orientado a Objetos, se busca obtener el \textit{modelo de dominio} del problema. El punto número tres, hace referencia a las propiedades y condiciones de las relaciones definidas en el punto anterior, es decir, a través del vocabulario \textit{OWL Lite}, definir las reglas de inferencia sobre las relaciones del modelo a través de las propiedades lógicas de transitividad, simetría y reflexividad, así como también la definición de propiedades inversas. El cuarto y último punto, se refiere a conocer a fondo cómo está compuesto el conocimiento en el área que es objeto de estudio, en este caso, \textit{Ciencias de la Computación}.
+
+Los cuatro (4) ítem enumerados anteriormente, pueden resumirse como \textit{Determinar la estructura del conocimiento en el área seleccionada}. Para ello, es necesario aplicar técnicas de \textit{Ingeniería del Conocimiento}. Según Norvig y Rusell (2004) \textit{Ingeniero de Conocimiento}, es alguien que investiga un dominio concreto, aprende qué conceptos son los importantes de ese dominio y crea una representación formal de los objetos y relaciones del dominio. En este caso, el dominio ya ha sido investigado por el autor durante los años de carrera, simplemente hace falta determinar qué conceptos son importantes en el área y producir la representación formal de dichos conceptos y las relaciones que guardan entre sí.
 
 \subsubsection{Diseño}
 Luego de analizar el área seleccionada y con base en las recomendaciones de la \textit{IEEE Computer Society} (IEEE-CS) y la \textit{Assosiation for Computing Machinery} (ACM), descritas en los documentos \textit{Computing Curricula 2001, Computer Science Final Report} (IEEE-CS y ACM, 2001) y el \textit{Computer Science Curriculum 2008: An Interim Revision of CS 2001} (ACM, 2008) para el campo de las \textit{Ciencias de la Computación} y el documento \textit{Computer Engineering 2004: Curriculum Guidelines for Undergraduate Programs in Computer Engineering} (IEEE-CS, 2004), que incorpora elementos de Ingeniería al primero, se llegó a la estructura jerárquica de clases mostrada en la Figura~\ref{classHierarchy}:
@@ -173,29 +176,7 @@ En RDF/OWL, todas las clases o entidades heredan por defecto de la clase \textit
     \end{center}
 \end{figure}
 
-En la Figura~\ref{knowledgeStructure} se muestra la estructura del conocimiento según las recomendaciones de la \textit{ACM} y la \textit{IEEE-CS}, puede observarse que es una estructura de \textit{Contención}, donde el nivel superior engloba todo lo que se encuentra en los niveles inferiores. También, según la Figura~\ref{knowledgeStructure}, las propiedades a la derecha (las que tienen el prefijo \textit{in}) son propiedades inversas de las de la izquierda (las que tienen el prefijo \textit{has}). Anotar esas propiedades como inversas, permite que a la hora de declarar un \textit{Named Individual} (instancias) en alguna de las clases, sólo sea necesario especificar una de las dos propiedades. Toda la estructura de contención va desde la clase más general (\textit{Discipline}) que contiene a toda la estructura, hasta la clase más específica (\textit{Concept}) que es el último eslabón de la cadena. Sólo con las relaciones descritas anteriormente y representadas de manera gráfica en la Figura~\ref{knowledgeStructure}, no basta para expresar lo dicho anteriormente pues ninguno de los atributos dibujados es transitivo, además, son propiedades distintas y no expresan ningún tipo de significado una de la otra sino que tienen significado por sí solas. Para solventar esta situación, se crearon dos súper-propiedades: \textit{contents} y \textit{content-by}, ambas transitivas e inversas una de la otra y que envuelven las propiedades \textit{has} e \textit{in} respectivamente.
-
-De esta manera, además de lo descrito en la Figura~\ref{knowledgeStructure}, queda expresada la \textit{Jerarquía de Contención} mostrada en la Figura~\ref{contentHierarchy} gracias a la propiedad \textit{contents}:
-
-
-\begin{figure}[!h]
-    \begin{center}
-        \textit{Discipline} \subseteq \textit{KnowledgeArea} \subseteq \textit{Unit} \subseteq \textit{Topic} \subseteq \textit{Concept}
-        \caption{Jerarquía de Contención}
-        \label{contentHierarchy}
-    \end{center}
-\end{figure}
-
-De la misma manera, también, a través de su relación inversa \textit{content-by}, queda expresado lo descrito en la Figura 4.5
-
-
-\begin{figure}[!h]
-    \begin{center}
-        \textit{Discipline} \supseteq \textit{KnowledgeArea} \supseteq \textit{Unit} \supseteq \textit{Topic} \supseteq \textit{Concept}
-        \caption{Jerarquía de Contención Inversa}
-        \label{inverseContent}
-    \end{center}
-\end{figure}
+En la Figura~\ref{knowledgeStructure} se muestra la estructura del conocimiento según las recomendaciones de la \textit{ACM} y la \textit{IEEE-CS}, puede observarse que es una estructura de \textit{Contención} o \textit{Agregación}, donde el nivel superior contiene todo lo que se encuentra en los niveles inferiores y, análogamente, los niveles inferiores conforman su nivel inmediatamente superior. También, según la Figura~\ref{knowledgeStructure}, las propiedades a la derecha (las que tienen el prefijo \textit{in}) son propiedades inversas de las de la izquierda (las que tienen el prefijo \textit{has}). Anotar esas propiedades como inversas, permite que a la hora de declarar un \textit{Individual} (instancias) en alguna de las clases, sólo sea necesario especificar una de las dos propiedades para permitir que la segunda pueda ser inferida. Toda la estructura de contención va desde la clase más general (\textit{Discipline}) que contiene a toda la estructura, hasta la clase más específica (\textit{Concept}) que es el último eslabón de la cadena. Sólo con las relaciones descritas anteriormente y representadas de manera gráfica en la Figura~\ref{knowledgeStructure}, no basta para expresar lo dicho anteriormente pues ninguno de los atributos dibujados es transitivo, además, son propiedades distintas y no expresan ningún tipo de significado una de la otra sino que tienen significado por sí solas. Para solventar esta situación, se crearon dos súper-propiedades: \textit{contents} y \textit{content-by}, ambas transitivas e inversas una de la otra y que envuelven las propiedades \textit{has} e \textit{in} respectivamente.
 
 En la Figura~\ref{knowledgeStructure}, se observan dos relaciones recursivas en le entidad \textit{Concept}, estas son: \textit{related-to} y una sub-propiedad \textit{preceded-by}, estas propiedades son \textit{simétrica} y \textit{transitiva} respectivamente, con esta jerarquía de propiedades, se expresa que si un concepto \textit{precede} a otro, entonces, también están \textit{relacionados}.
 
@@ -227,6 +208,8 @@ Para la implementación de la \textit{Ontología}, se utilizó el editor gráfic
 
 Se crearon instancias desde la clase \textit{Discipline} hasta la clase \textit{Topic}, según las áreas de conocimiento, unidades y tópicos especificados en los documentos de recomendación de la \textit{IEEE-CS} y la \textit{ACM}, tomando en cuenta sólo los contenidos del núcleo de la carrera.
 
+Se definieron las relaciones entre las clases y sus reglas de inferencia a través de propiedades \textit{OWL}. Normalmente, cuando se desarrollan bases de conocimiento, se definen los hechos y las reglas de inferencia de manera independiente, en la \textit{Web Semántica}, las reglas de inferencia, como se observó en la etapa de diseño, se encuentran \textbf{dentro} del mismo modelo, mediante la especificación de propiedades lógicas a las relaciones que conectan las clases. Vale destacar que, aún cuando normalmente basta con las propiedades existentes en el vocabulario \textit{OWL}, existen reglas de inferencia que escapan al alcance de estas propiedades, para estos casos es posible escribir un conjunto de reglas utilizando un lenguaje especial para ello llamado \textit{Semantic Web Rule Language} (SWRL). Este lenguaje fue creado para solventar una carencia de \textit{OWL}, al no soportar propiedades compuestas (Hebeler et al, 2009).
+
 \subsubsection{Validación}
 Para llevar a cabo la validación de la \textit{Ontología}, se utilizaron dos métodos para determinar dos factores distintos acerca del modelo: 
 
@@ -238,7 +221,9 @@ Para llevar a cabo la validación de la \textit{Ontología}, se utilizaron dos m
 \section{[Iteración 5]: Desarrollo de la herramienta para administrar la ontología}
 Durante esta etapa, se desarrolló una herramienta para gestionar la ontología desarrollada en la iteración anterior. Esta herramienta no pretende ser un editor de ontologías, pues no editará ni agregará clases ni relaciones.
 
-A través de esta herramienta podrá agregarse nuevos recursos y nuevas instancias a las clases ya creadas y, además, actualizar la ontología razonada dentro del motor de persistencia. 
+A través de esta herramienta podrá agregarse nuevos recursos y nuevas instancias a las clases ya creadas y, además, actualizar la ontología razonada dentro del motor de persistencia, cumpliendo de esta manera con el desarrollo de un proceso semiautomático para el crecimiento de la ontología.
+
+Cuando se habla de procedimientos semiautomáticos, se infiere que una parte del proceso se realiza de manera manual, mientras que la otra es llevada a cabo por una agente de software. En este caso, la parte manual del proceso es detectar las nuevas instancias que serán creadas, es decir, los nuevos elementos que serán añadidos al vocabulario, una vez definidos, pueden ser agregados al modelo y persistidos de manera automática a través de la herramienta desarrollada en esta iteración indicando únicamente el nombre y las relaciones de la nueva instancia a través de las opciones propuestas por la herramienta. De la misma manera, a través del motor de inferencia, puede hacerse crecer la ontología escrita en el documento \textit{OWL}, mediante el descubrimiento de nuevas relaciones inferidas a partir de las escritas en el modelo.
 
 Finalmente, vale destacar que dado carácter experimental y prototípico del presente trabajo, se prestará especial atención al procesamiento de los datos en términos de sus relaciones, dejando en segundo plano aspectos como usabilidad, seguridad y diseño a nivel gráfico, tópicos importantes para cualquier sistema completo y que, sin lugar a dudas, deben estar presentes en la solución final pero que fueron relegados a un segundo plano para la presentación de este prototipo y se espera que dichas características sean agregadas en trabajos futuros.
 
@@ -251,6 +236,8 @@ La herramienta desarrollada es capaz de:
 \begin{enumerate}
     \item Agregar, eliminar, consultar y editar recursos.
     \item Agregar, eliminar, consultar y editar anotaciones.
+    \item Aplicar razonamiento al modelo a través de un motor de inferencia.
+    \item Actualizar el modelo de conocimiento que persiste en \textit{Virtuoso}
 \end{enumerate}
 
 Respecto a las clases y las relaciones definidas en la ontología base, una vez que el conocimiento ha sido modelado, es realmente difícil que aparezca información nueva para ser incorporada a nivel de clases. Es por ello que no se incorporó esta funcionalidad en la herramienta, de ocurrir esto, resulta más conveniente agregar las nuevas clases a través de un editor de ontologías especializado (como \texrit{Protègè}). Lo que sí es posible es la aparición de nuevos conceptos o áreas de conocimiento dentro del campo que se realiza el modelo de conocimiento, estos pueden ser agregados como instancias de las clases ya creadas.
